@@ -123,7 +123,8 @@ function footer() {
 }
 
 function pageShell({ title, description, body, current }) {
-  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css"></head><body><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
+  const figmaCapture = process.env.FIGMA_CAPTURE === '1' ? '<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>' : '';
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">${figmaCapture}</head><body><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
 }
 
 function landingPage() {
@@ -131,7 +132,9 @@ function landingPage() {
   const actions = hero.actions.map(action => `<a class="button-link ${action.kind === 'secondary' ? 'button-link--secondary' : ''}" href="${e(safeHref(action.href))}">${e(action.label)}</a>`).join('');
   const routes = hero.routes.map(route => `<a href="${e(safeHref(route.href))}">${e(route.label)}</a>`).join('');
   const heroFigure = `<figure class="hero-visual">${picture('hero-territory.svg', null, hero.visualCaption)}<figcaption>${e(hero.visualCaption)}</figcaption></figure>`;
-  const heroHtml = `<section class="hero" id="hero" aria-labelledby="hero-title" data-figma-section="hero"><div class="container"><div class="hero-layout"><div class="hero-copy"><span class="eyebrow">${e(hero.eyebrow)}</span><h1 id="hero-title">${e(hero.title)}</h1><p class="hero-lead">${e(hero.lead)}</p><div class="hero-actions">${actions}</div><p class="hero-note">${e(content.meta.conceptStatus)}. ${e(hero.body)}</p></div>${heroFigure}</div><nav class="role-paths" aria-label="Быстрые входы по задачам"><span class="role-paths__label">${e(hero.routesLabel)}</span>${routes}</nav></div></section>`;
+  const notePrefix = hero.eyebrow === content.meta.conceptStatus ? '' : `${e(content.meta.conceptStatus)}. `;
+  const heroClass = content.meta.copyVersion?.startsWith('strict/') ? 'hero hero--strict' : 'hero';
+  const heroHtml = `<section class="${heroClass}" id="hero" aria-labelledby="hero-title" data-figma-section="hero"><div class="container"><div class="hero-layout"><div class="hero-copy"><span class="eyebrow">${e(hero.eyebrow)}</span><h1 id="hero-title">${e(hero.title)}</h1><p class="hero-lead">${e(hero.lead)}</p><div class="hero-actions">${actions}</div><p class="hero-note">${notePrefix}${e(hero.body)}</p></div>${heroFigure}</div><nav class="role-paths" aria-label="Быстрые входы по задачам"><span class="role-paths__label">${e(hero.routesLabel)}</span>${routes}</nav></div></section>`;
   return pageShell({ title: content.meta.title, description: content.meta.description, current: 'home', body: heroHtml + content.sections.map(renderSection).join('\n') });
 }
 

@@ -47,6 +47,7 @@ a:hover { color: var(--color-accent); }
 .hero-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); align-items: center; gap: clamp(32px, 5vw, 84px); }
 .hero-copy { position: relative; z-index: 1; }
 .hero h1 { max-width: 850px; margin: 25px 0 28px; font-size: clamp(50px, 5.3vw, var(--type-hero-size)); font-weight: var(--type-hero-weight); line-height: 1.02; letter-spacing: var(--type-hero-tracking); }
+.hero--strict h1 { font-size: clamp(52px, 4.3vw, 64px); }
 .hero-lead { max-width: 700px; margin: 0; font-size: var(--type-lead-size); line-height: var(--type-lead-line-height); letter-spacing: var(--type-lead-tracking); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .hero-note { max-width: 640px; margin: 24px 0 0; color: var(--color-muted); font-size: var(--type-caption-size); line-height: var(--type-caption-line-height); }
@@ -226,6 +227,7 @@ a:hover { color: var(--color-accent); }
   .hero { padding: 59px 0 45px; }
   .hero-layout { display: block; }
   .hero h1 { margin: 17px 0 20px; font-size: var(--type-hero-size); line-height: var(--type-hero-line-height); letter-spacing: var(--type-hero-tracking); overflow-wrap: anywhere; }
+  .hero--strict h1 { font-size: var(--type-hero-size); }
   .hero-lead { font-size: var(--type-lead-size); line-height: var(--type-lead-line-height); }
   .hero-actions { margin-top: 25px; }
   .hero-actions .button-link { width: 100%; }

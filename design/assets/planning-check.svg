@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="600" viewBox="0 0 1240 600" role="img" aria-labelledby="title desc">
+  <title id="title">Ранняя проверка условного проекта планировки</title>
+  <desc id="desc">На условной схеме территории проектный участок сопоставлен с действующими сведениями. Замечание связано с участком, применимым правилом и версией источника; статус — требуется проверка, а не автоматическое признание нарушения.</desc>
+  <defs><pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#EAE9E5" stroke-width="1"/></pattern></defs>
+  <rect width="1240" height="600" rx="22" fill="#FFFFFF" stroke="#DCDDDC"/>
+  <g id="map" transform="translate(28 28)">
+    <rect width="710" height="544" rx="16" fill="#F7F6F2"/>
+    <rect width="710" height="544" rx="16" fill="url(#grid)"/>
+    <g id="territory" fill="#F0F0EC" stroke="#C8CAC7" stroke-width="1.5">
+      <path d="M42 58H241V195H42Z"/><path d="M267 58H469V195H267Z"/><path d="M495 58H669V195H495Z"/>
+      <path d="M42 226H241V482H42Z"/><path d="M267 226H469V482H267Z"/><path d="M495 226H669V482H495Z"/>
+    </g>
+    <g id="road" fill="none" stroke="#FFFFFF" stroke-width="24"><path d="M254 20V510M20 210H690"/></g>
+    <g id="existing" fill="none" stroke="#A8AAA6" stroke-width="2"><path d="M62 76H222V175H62Z M285 76H451V173H285Z M512 76H651V172H512Z M61 246H222V465H61Z M513 248H651V464H513Z"/></g>
+    <g id="project" fill="#EADFE7" stroke="#6E405F" stroke-width="2.5">
+      <path d="M285 246H452V465H285Z"/>
+    </g>
+    <path d="M305 266H431V445H305Z" fill="none" stroke="#6E405F" stroke-width="2" stroke-dasharray="7 7"/>
+    <g id="reference-line" fill="none" stroke="#5F6266" stroke-width="2.5" stroke-dasharray="10 7"><path d="M35 358H675"/></g>
+    <g id="check-marker">
+      <circle cx="370" cy="358" r="25" fill="#FFFFFF" stroke="#6E405F" stroke-width="2.5"/>
+      <path d="M370 344v18m0 7v2" stroke="#6E405F" stroke-width="3" stroke-linecap="round"/>
+      <path d="M397 345C456 299 485 287 542 288" fill="none" stroke="#6E405F" stroke-width="2"/>
+      <circle cx="542" cy="288" r="4" fill="#6E405F"/>
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="23" y="30" font-size="11" font-weight="700" letter-spacing="1.3" fill="#62656B">УСЛОВНЫЙ ФРАГМЕНТ ТЕРРИТОРИИ</text>
+      <text x="296" y="291" font-size="15" font-weight="700" fill="#6E405F">проектный участок</text>
+      <text x="47" y="385" font-size="13" fill="#40434A">линия действующих сведений</text>
+      <text x="552" y="294" font-size="12" font-weight="700" fill="#6E405F">область проверки</text>
+      <text x="25" y="523" font-size="12" fill="#62656B">Схема условная. Пересечение линий не доказывает нарушение.</text>
+    </g>
+  </g>
+  <g id="finding" font-family="Arial, Helvetica, sans-serif">
+    <text x="778" y="60" font-size="12" font-weight="700" letter-spacing="1.5" fill="#6E405F">ПРОВЕРЯЕМОЕ ЗАМЕЧАНИЕ</text>
+    <text x="778" y="112" font-size="29" font-weight="700" fill="#202228">Что нужно уточнить</text>
+    <text x="778" y="145" font-size="17" fill="#62656B">до принятия решения</text>
+    <path d="M778 178H1202M778 256H1202M778 334H1202M778 412H1202" stroke="#DCDDDC"/>
+    <g font-size="12" font-weight="700" fill="#85878B" letter-spacing="1"><text x="778" y="204">ОБЪЕКТ</text><text x="778" y="282">ОСНОВАНИЕ</text><text x="778" y="360">ИСТОЧНИК</text><text x="778" y="438">СТАТУС</text></g>
+    <g font-size="17" fill="#202228"><text x="778" y="235">проектный участок</text><text x="778" y="313">применимое правило</text><text x="778" y="391">действующая версия сведений</text><text x="778" y="469">требуется проверка человеком</text></g>
+    <rect x="778" y="503" width="424" height="62" rx="10" fill="#F7F6F2"/>
+    <text x="794" y="528" font-size="14" fill="#40434A">После доработки видно, что изменилось</text>
+    <text x="794" y="548" font-size="14" fill="#40434A">и что нужно проверить повторно.</text>
+  </g>
+</svg>

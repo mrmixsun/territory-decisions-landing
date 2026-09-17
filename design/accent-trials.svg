@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="470" viewBox="0 0 1260 470" role="img" aria-labelledby="title desc">
+  <title id="title">Три цветовые пробы на одинаковой композиции</title>
+  <desc id="desc">Один и тот же фрагмент первого экрана в сливовом, оксидно-красном и пыльно-индиговом акцентах. Выбор не утверждён.</desc>
+  <rect width="1260" height="470" fill="#F7F6F2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="20" y="35" font-size="13" font-weight="700" letter-spacing="1.4" fill="#62656B">ОДНА КОМПОЗИЦИЯ · ТРИ АКЦЕНТА · ВЫБОР НЕ УТВЕРЖДЁН</text>
+    <g id="plum">
+      <rect x="20" y="60" width="390" height="354" rx="14" fill="#FFFFFF" stroke="#DCDDDC"/>
+      <text x="42" y="91" font-size="12" font-weight="700" fill="#6E405F">01 · СЛИВОВЫЙ</text>
+      <text x="42" y="132" font-size="27" font-weight="700" fill="#202228">Цифровое управление</text><text x="42" y="164" font-size="27" font-weight="700" fill="#202228">развитием территорий</text>
+      <text x="42" y="193" font-size="12" fill="#62656B">Решения связаны с данными и изменениями.</text>
+      <rect x="42" y="215" width="150" height="34" rx="17" fill="#6E405F"/><text x="54" y="237" font-size="12" font-weight="700" fill="#FFFFFF">Читать Концепцию ↗</text>
+      <g fill="none" stroke="#DCDDDC"><path d="M43 275H386M43 302H386M43 329H386M92 263V392M159 263V392M226 263V392M293 263V392M360 263V392"/></g>
+      <path d="M202 307H288V371H202Z" fill="#EADFE7" stroke="#6E405F" stroke-width="2"/>
+      <path d="M245 307V281H326" fill="none" stroke="#6E405F" stroke-width="2"/><circle cx="326" cy="281" r="4" fill="#6E405F"/>
+      <text x="42" y="392" font-size="11" fill="#62656B">рабочая гипотеза · спокойный и самостоятельный</text>
+    </g>
+    <g id="oxide">
+      <rect x="435" y="60" width="390" height="354" rx="14" fill="#FFFFFF" stroke="#DCDDDC"/>
+      <text x="457" y="91" font-size="12" font-weight="700" fill="#A3494B">02 · ОКСИДНЫЙ КРАСНЫЙ</text>
+      <text x="457" y="132" font-size="27" font-weight="700" fill="#202228">Цифровое управление</text><text x="457" y="164" font-size="27" font-weight="700" fill="#202228">развитием территорий</text>
+      <text x="457" y="193" font-size="12" fill="#62656B">Решения связаны с данными и изменениями.</text>
+      <rect x="457" y="215" width="150" height="34" rx="17" fill="#A3494B"/><text x="469" y="237" font-size="12" font-weight="700" fill="#FFFFFF">Читать Концепцию ↗</text>
+      <g fill="none" stroke="#DCDDDC"><path d="M458 275H801M458 302H801M458 329H801M507 263V392M574 263V392M641 263V392M708 263V392M775 263V392"/></g>
+      <path d="M617 307H703V371H617Z" fill="#F2E1E1" stroke="#A3494B" stroke-width="2"/>
+      <path d="M660 307V281H741" fill="none" stroke="#A3494B" stroke-width="2"/><circle cx="741" cy="281" r="4" fill="#A3494B"/>
+      <text x="457" y="392" font-size="11" fill="#62656B">теплее и заметнее · может казаться тревожным</text>
+    </g>
+    <g id="indigo">
+      <rect x="850" y="60" width="390" height="354" rx="14" fill="#FFFFFF" stroke="#DCDDDC"/>
+      <text x="872" y="91" font-size="12" font-weight="700" fill="#514B93">03 · ПЫЛЬНЫЙ ИНДИГО</text>
+      <text x="872" y="132" font-size="27" font-weight="700" fill="#202228">Цифровое управление</text><text x="872" y="164" font-size="27" font-weight="700" fill="#202228">развитием территорий</text>
+      <text x="872" y="193" font-size="12" fill="#62656B">Решения связаны с данными и изменениями.</text>
+      <rect x="872" y="215" width="150" height="34" rx="17" fill="#514B93"/><text x="884" y="237" font-size="12" font-weight="700" fill="#FFFFFF">Читать Концепцию ↗</text>
+      <g fill="none" stroke="#DCDDDC"><path d="M873 275H1216M873 302H1216M873 329H1216M922 263V392M989 263V392M1056 263V392M1123 263V392M1190 263V392"/></g>
+      <path d="M1032 307H1118V371H1032Z" fill="#E5E4F2" stroke="#514B93" stroke-width="2"/>
+      <path d="M1075 307V281H1156" fill="none" stroke="#514B93" stroke-width="2"/><circle cx="1156" cy="281" r="4" fill="#514B93"/>
+      <text x="872" y="392" font-size="11" fill="#62656B">холоднее · выше риск ассоциации с IT-продуктом</text>
+    </g>
+    <text x="20" y="451" font-size="12" fill="#62656B">Фон, типографика, масштаб и схема одинаковы; меняется только акцент и его мягкий тон.</text>
+  </g>
+</svg>

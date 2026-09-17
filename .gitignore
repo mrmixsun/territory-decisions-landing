@@ -1,0 +1,6 @@
+.DS_Store
+._*
+node_modules/
+site/dist/
+*.tmp
+*.cache

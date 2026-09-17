@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600" role="img" aria-labelledby="title desc">
+  <title id="title">Изменение территории и связанные решения</title>
+  <desc id="desc">Условная схема кварталов: участок проектного изменения связан с улицей, инженерной сетью и общественным объектом. Показаны разные слои — факт, проект и действующее решение.</desc>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#D1CFD0"/></pattern>
+    <filter id="lift" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#202228" flood-opacity=".08"/></filter>
+  </defs>
+  <rect width="720" height="600" rx="24" fill="#F7F6F2"/>
+  <rect width="720" height="600" rx="24" fill="url(#dots)"/>
+  <g id="map-sheet" filter="url(#lift)">
+    <rect x="46" y="48" width="628" height="492" rx="18" fill="#FFFFFF" stroke="#DCDDDC"/>
+    <g id="map-grid" fill="none" stroke="#E4E3DF" stroke-width="1">
+      <path d="M46 148H674M46 248H674M46 348H674M46 448H674"/>
+      <path d="M146 48V540M246 48V540M346 48V540M446 48V540M546 48V540"/>
+    </g>
+    <g id="streets" fill="none" stroke="#F7F6F2" stroke-linecap="round">
+      <path d="M46 306H674" stroke-width="42"/>
+      <path d="M184 48V540" stroke-width="42"/>
+      <path d="M494 48V540" stroke-width="42"/>
+    </g>
+    <g id="street-edges" fill="none" stroke="#C8C7C3" stroke-width="1.5">
+      <path d="M46 285H674M46 327H674M163 48V540M205 48V540M473 48V540M515 48V540"/>
+    </g>
+    <g id="parcels" fill="#F2F1ED" stroke="#D0D1CE" stroke-width="1.5">
+      <path d="M76 82H150V162H76Z"/><path d="M78 182H144V253H78Z"/>
+      <path d="M230 74H326V160H230Z"/><path d="M354 78H449V158H354Z"/>
+      <path d="M232 182H326V251H232Z"/><path d="M353 182H448V253H353Z"/>
+      <path d="M542 82H644V154H542Z"/><path d="M542 181H642V252H542Z"/>
+      <path d="M78 365H150V501H78Z"/><path d="M232 365H320V501H232Z"/>
+      <path d="M349 365H449V499H349Z"/><path d="M542 365H644V499H542Z"/>
+    </g>
+    <g id="built-footprints" fill="none" stroke="#B6B8B5" stroke-width="1.5">
+      <path d="M91 95H135V149H91Z M91 196H130V238H91Z M246 88H311V146H246Z M371 94H429V144H371Z M247 194H310V238H247Z M555 96H627V141H555Z M559 193H624V236H559Z M91 380H136V483H91Z M246 382H304V484H246Z M556 382H629V482H556Z"/>
+    </g>
+    <g id="project-site">
+      <path d="M348 363H451V500H348Z" fill="#EADFE7" stroke="#6E405F" stroke-width="2.5"/>
+      <path d="M362 380H438V483H362Z" fill="none" stroke="#6E405F" stroke-width="2" stroke-dasharray="7 6"/>
+      <circle cx="400" cy="431" r="26" fill="#FFFFFF" stroke="#6E405F" stroke-width="2"/>
+      <path d="M388 433h24m-12-12v24" stroke="#6E405F" stroke-width="2"/>
+    </g>
+    <g id="road-link" fill="none" stroke="#6E405F" stroke-width="2.5"><path d="M400 362V305H575"/><circle cx="575" cy="305" r="4" fill="#6E405F"/></g>
+    <g id="network-link" fill="none" stroke="#6E405F" stroke-width="2.5" stroke-dasharray="7 6"><path d="M349 430H184V351"/><circle cx="184" cy="351" r="4" fill="#6E405F" stroke="none"/></g>
+    <g id="social-link" fill="none" stroke="#6E405F" stroke-width="2.5"><path d="M450 432H554V440"/><circle cx="554" cy="440" r="4" fill="#6E405F"/></g>
+    <g id="map-labels" font-family="Arial, Helvetica, sans-serif" fill="#202228">
+      <text x="68" y="79" font-size="11" letter-spacing="1.4" fill="#85878B">ТЕРРИТОРИЯ / УСЛОВНАЯ СХЕМА</text>
+      <text x="529" y="295" font-size="12" font-weight="700">улица</text>
+      <text x="74" y="345" font-size="12" font-weight="700">сеть</text>
+      <text x="548" y="462" font-size="12" font-weight="700">социальный объект</text>
+      <text x="345" y="526" font-size="13" font-weight="700" fill="#6E405F">проектное изменение участка</text>
+    </g>
+  </g>
+  <g id="status-legend" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#40434A">
+    <rect x="52" y="559" width="16" height="16" fill="#F2F1ED" stroke="#B6B8B5"/><text x="77" y="572">факт</text>
+    <rect x="150" y="559" width="16" height="16" fill="none" stroke="#6E405F" stroke-width="2" stroke-dasharray="4 3"/><text x="176" y="572">проект</text>
+    <path d="M253 567h20" stroke="#6E405F" stroke-width="2"/><text x="282" y="572">связь с решением</text>
+  </g>
+</svg>

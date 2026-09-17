@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="992" viewBox="0 0 360 992" role="img" aria-labelledby="title desc">
+  <title id="title">Сравнение двух процессов работы с решением</title>
+  <desc id="desc">Проблемный процесс: документы и акт, затем отдельный перенос в систему и повторная сверка. Целевой процесс: версии данных, проект с процедурами, итоговая версия, связанная с актом, затем начало действия и применение.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M1 1l3 5 3-5" fill="none" stroke="#6E405F" stroke-width="1.4"/></marker></defs>
+  <rect width="360" height="992" rx="18" fill="#FFFFFF" stroke="#DCDDDC"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="20" y="36" font-size="13" font-weight="700" letter-spacing="1" fill="#62656B">ПРОБЛЕМНЫЙ ПРОЦЕСС</text>
+    <g id="broken" fill="#F7F6F2" stroke="#DCDDDC"><rect x="20" y="52" width="320" height="74" rx="9"/><rect x="20" y="142" width="320" height="74" rx="9"/><rect x="20" y="232" width="320" height="74" rx="9"/><rect x="20" y="322" width="320" height="74" rx="9"/></g>
+    <g fill="#202228" font-size="16" font-weight="700"><text x="36" y="83">Проект и комплект документов</text><text x="36" y="173">Процедуры и акт</text><text x="36" y="263">Отдельный перенос в систему</text><text x="36" y="353">Новые выгрузки и сверка</text></g>
+    <g fill="#62656B" font-size="14"><text x="36" y="106">документная редакция</text><text x="36" y="196">решение уполномоченного субъекта</text><text x="36" y="286">содержание переносят повторно</text><text x="36" y="376">связи восстанавливают заново</text></g>
+    <g fill="none" stroke="#9A9B9B" stroke-width="1.5" marker-end="url(#arrow)"><path d="M180 128v10"/><path d="M180 218v10"/><path d="M180 308v10"/></g>
+    <text x="20" y="431" font-size="12" font-weight="700" letter-spacing=".6" fill="#6E405F">ПРЕДЛАГАЕТСЯ · СВЯЗАННЫЙ КОНТУР</text>
+    <g id="proposed" fill="#F7F6F2" stroke="#DCDDDC"><rect x="20" y="448" width="320" height="82" rx="9"/><rect x="20" y="548" width="320" height="82" rx="9"/><rect x="20" y="748" width="320" height="82" rx="9"/></g>
+    <rect x="20" y="648" width="320" height="82" rx="9" fill="#EADFE7" stroke="#6E405F" stroke-width="2"/>
+    <g fill="#202228" font-size="16" font-weight="700"><text x="36" y="480">Исходные версии данных</text><text x="36" y="580">Проект, проверка и процедуры</text><text x="36" y="680">Итоговая версия ↔ акт</text><text x="36" y="780">Начало действия и применение</text></g>
+    <g fill="#62656B" font-size="14"><text x="36" y="506">содержание и происхождение</text><text x="36" y="606">доработка остаётся видимой</text><text x="36" y="706">однозначная связь</text><text x="36" y="806">изменение с историей</text></g>
+    <g fill="none" stroke="#6E405F" stroke-width="1.6" marker-end="url(#arrow)"><path d="M180 533v11"/><path d="M180 633v11"/><path d="M180 733v11"/></g>
+    <path d="M20 857H340" stroke="#DCDDDC"/>
+    <text x="20" y="887" font-size="13" fill="#40434A">Принятие решения и начало его</text><text x="20" y="906" font-size="13" fill="#40434A">действия — разные события.</text>
+    <text x="20" y="941" font-size="12" fill="#62656B">Условная схема целевого процесса.</text>
+  </g>
+</svg>

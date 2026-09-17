@@ -1,0 +1,248 @@
+import { readFile, writeFile, mkdir, cp, rm, readdir } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const siteDir = path.resolve(here, '..');
+const prototypeDir = path.resolve(siteDir, '..');
+const distDir = path.join(siteDir, 'dist');
+const contentDir = path.join(prototypeDir, 'content');
+const designDir = path.join(prototypeDir, 'design');
+const assetsDir = path.join(designDir, 'assets');
+
+const content = JSON.parse(await readFile(path.join(contentDir, 'landing.json'), 'utf8'));
+const tokens = JSON.parse(await readFile(path.join(designDir, 'tokens.json'), 'utf8'));
+const fullText = await readFile(path.join(contentDir, 'full-text.md'), 'utf8');
+const assetNames = new Set(await readdir(assetsDir));
+
+const esc = (value = '') => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+const safeHref = (href = '') => /^(?:#|(?:\.\/)?(?:index|concept)\.html(?:#|$))/.test(href) ? href : '#';
+const safeContentHref = (href = '') => /^https:\/\//i.test(href) ? href : safeHref(href);
+const e = (value = '') => esc(value);
+const para = (items = []) => items.map(item => `<p>${e(item)}</p>`).join('\n');
+const list = (items = []) => `<ul>${items.map(item => `<li>${e(item)}</li>`).join('')}</ul>`;
+const asset = (name) => `./assets/${name}`;
+
+function picture(name, mobileName, alt, className = '') {
+  if (!assetNames.has(name)) return '';
+  const mobile = mobileName && assetNames.has(mobileName)
+    ? `<source media="(max-width: 760px)" srcset="${asset(mobileName)}">` : '';
+  return `<picture class="${className}">${mobile}<img src="${asset(name)}" alt="${e(alt)}" loading="lazy" decoding="async"></picture>`;
+}
+
+function documentLink(link, className = 'text-link') {
+  if (!link) return '';
+  return `<a class="${className}" href="${e(safeHref(link.href))}">${e(link.label)}</a>`;
+}
+
+function diagramFigure(frame, file, mobileFile, alt, extra = '') {
+  const diagram = frame.diagram;
+  return `<figure class="diagram ${extra}">
+    <div class="diagram__image">${picture(file, mobileFile, alt)}</div>
+    <figcaption>${e(diagram.caption)}${diagram.note ? `<br><span>${e(diagram.note)}</span>` : ''}</figcaption>
+  </figure>`;
+}
+
+function frameTitle(frame) {
+  return `<div class="frame-heading"><span class="eyebrow">${e(frame.eyebrow)}</span><h3>${e(frame.title)}</h3></div>`;
+}
+
+function frameCopy(frame) {
+  return `<div class="section-copy">${para(frame.paragraphs)}${frame.more ? `<p class="frame-more">${documentLink(frame.more)}</p>` : ''}</div>`;
+}
+
+function frameTop(frame) {
+  return `<article class="frame frame--${e(frame.diagram?.type || 'materials')}" id="${e(frame.id)}" data-figma-frame="${e(frame.number)}">
+    <div class="frame-index">${e(frame.number)}</div>${frameTitle(frame)}`;
+}
+
+function renderProcess(frame) {
+  const d = frame.diagram;
+  return `${frameTop(frame)}
+    <div class="frame-intro">${frameCopy(frame)}</div>
+    <div class="comparison-intro"><div><h4>${e(d.beforeLabel)}</h4><p>Официальное содержание приходится повторно переносить и сверять между представлениями.</p></div><div><h4>${e(d.afterLabel)}</h4><p>Версия, процедура и правовое основание связаны в одном жизненном цикле.</p></div></div>
+    ${diagramFigure(frame, 'process-comparison.svg', 'process-comparison-mobile.svg', `${d.beforeLabel}: ${d.beforeSteps.join(' → ')}. ${d.afterLabel}: ${d.afterSteps.join(' → ')}.`, 'diagram--wide')}
+  </article>`;
+}
+
+function renderTimeline(frame) {
+  const d = frame.diagram;
+  const items = d.steps.map((step, index) => `<li class="timeline-step ${index === 1 ? 'timeline-step--accent' : ''}"><span class="timeline-step__num">0${index + 1}</span><strong>${e(step)}</strong></li>`).join('');
+  return `${frameTop(frame)}<div class="section-grid"><div>${frameCopy(frame)}</div><figure class="diagram diagram--html"><div class="diagram__image"><ol class="timeline-list">${items}</ol></div><figcaption>${e(d.caption)}${d.note ? `<br>${e(d.note)}` : ''}</figcaption></figure></div></article>`;
+}
+
+function renderLayers(frame) {
+  const d = frame.diagram;
+  const layers = d.layers.map((layer, index) => `<div class="layer-card"><span class="layer-card__num">0${index + 1}</span><strong>${e(layer)}</strong><span class="status-label">${index === 0 ? 'Подтверждённый факт' : index === 1 ? 'Действует по основанию' : 'Пока проект'}</span></div>`).join('');
+  return `${frameTop(frame)}<div class="section-grid"><div>${frameCopy(frame)}</div><figure class="diagram diagram--html"><div class="diagram__image"><div class="layer-stack">${layers}</div><div class="metadata-strip">${d.metadata.map(item => `<span>${e(item)}</span>`).join('')}</div></div><figcaption>${e(d.caption)}</figcaption></figure></div></article>`;
+}
+
+function renderReview(frame) {
+  const d = frame.diagram;
+  const facts = d.fields.map(row => `<div><dt>${e(row.label)}</dt><dd>${e(row.value)}</dd></div>`).join('');
+  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div>${diagramFigure(frame, 'planning-check.svg', 'planning-check-mobile.svg', `Условный проект планировки и замечание: ${d.fields.map(x => `${x.label} — ${x.value}`).join('; ')}.`, 'diagram--wide')}<div class="example-card"><div><span class="micro-heading">Карточка замечания</span><dl class="example-facts">${facts}</dl></div><div class="example-card__note"><span class="status-label status-label--accent">Требует проверки</span><p>Сигнал связывается с объектом, правилом и версией источника; решение остаётся за человеком.</p></div></div></article>`;
+}
+
+function renderNetwork(frame) {
+  const d = frame.diagram;
+  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div>${diagramFigure(frame, 'linked-change.svg', 'linked-change-mobile.svg', `${d.center}. Связанные вопросы: ${d.links.join(', ')}.`, 'diagram--wide')}<div class="linked-questions"><span class="micro-heading">Вопросы к изменению</span><ul class="questions">${d.questions.map(q => `<li>${e(q)}</li>`).join('')}</ul></div></article>`;
+}
+
+function renderStages(frame) {
+  const d = frame.diagram;
+  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div><ol class="phase-list">${d.stages.map((stage, index) => `<li><strong>${e(stage)}</strong>${index === 0 ? '<p>Связать официальную версию, процедуры и акт.</p>' : index === 1 ? '<p>Расширять связи и актуализацию по мере готовности.</p>' : '<p>Развивать проверенные методы на надёжной основе.</p>'}</li>`).join('')}</ol><div class="paired-lists"><div><h4>${e(d.measureLabel)}</h4>${list(d.measures)}</div><div><h4>${e(d.costsLabel)}</h4>${list(d.costs)}</div></div><p class="diagram-alt">${e(d.caption)}</p></article>`;
+}
+
+function renderSystems(frame) {
+  const d = frame.diagram;
+  return `${frameTop(frame)}<div class="section-grid"><div>${frameCopy(frame)}</div><figure class="diagram diagram--html"><div class="diagram__image"><div class="systems-grid">${d.systems.map((system, i) => `<div class="system-node"><span>0${i + 1}</span><strong>${e(system)}</strong></div>`).join('')}</div><div class="shared-rules"><span class="micro-heading">Общие правила обмена</span>${d.sharedRules.map(rule => `<span class="rule-chip">${e(rule)}</span>`).join('')}</div></div><figcaption>${e(d.caption)}</figcaption></figure></div></article>`;
+}
+
+function renderMaterials(frame) {
+  const material = frame.materials?.[0];
+  return `<article class="frame frame--materials" id="${e(frame.id)}" data-figma-frame="${e(frame.number)}"><div class="materials-panel"><div><span class="eyebrow">${e(frame.eyebrow)}</span><h3>${e(frame.title)}</h3>${para(frame.paragraphs)}${material ? `<a class="button-link" href="${e(safeHref(material.href))}">${e(material.label)} <span aria-hidden="true">↗</span></a><p class="material-description">${e(material.description)}</p>` : ''}</div><aside><strong>${e(frame.contactLabel)}</strong><p>${e(frame.contactHelp)}</p></aside></div></article>`;
+}
+
+function renderFrame(frame) {
+  const renderers = { comparison: renderProcess, timeline: renderTimeline, layers: renderLayers, 'issue-card': renderReview, network: renderNetwork, stages: renderStages, systems: renderSystems };
+  return (renderers[frame.diagram?.type] || renderMaterials)(frame);
+}
+
+function renderSection(section, index) {
+  const tint = index % 2 ? 'section--surface' : 'section--paper';
+  return `<section class="section ${tint}" id="${e(section.id)}" aria-labelledby="heading-${e(section.id)}" data-figma-section="${e(section.id)}"><div class="container"><div class="section-head"><span class="section-index">0${index + 1} / 06</span><span class="eyebrow">${e(section.navLabel)}</span><h2 id="heading-${e(section.id)}">${e(section.title)}</h2><p>${e(section.intro)}</p></div>${section.frames.map(renderFrame).join('\n')}</div></section>`;
+}
+
+function header(current = 'home') {
+  const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${e(item.label)}</a>`).join('');
+  return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу"><span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span></a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="./concept.html">Полный текст</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="./concept.html">Полный текст</a></nav></header>`;
+}
+
+function footer() {
+  return `<footer class="site-footer"><div class="container footer-inner"><p>${e(content.meta.footerNote)}</p><a href="./concept.html">Полный текст Концепции</a></div></footer>`;
+}
+
+function pageShell({ title, description, body, current }) {
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css"></head><body><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
+}
+
+function landingPage() {
+  const hero = content.hero;
+  const actions = hero.actions.map(action => `<a class="button-link ${action.kind === 'secondary' ? 'button-link--secondary' : ''}" href="${e(safeHref(action.href))}">${e(action.label)}</a>`).join('');
+  const routes = hero.routes.map(route => `<a href="${e(safeHref(route.href))}">${e(route.label)}</a>`).join('');
+  const heroFigure = `<figure class="hero-visual">${picture('hero-territory.svg', null, hero.visualCaption)}<figcaption>${e(hero.visualCaption)}</figcaption></figure>`;
+  const heroHtml = `<section class="hero" id="hero" aria-labelledby="hero-title" data-figma-section="hero"><div class="container"><div class="hero-layout"><div class="hero-copy"><span class="eyebrow">${e(hero.eyebrow)}</span><h1 id="hero-title">${e(hero.title)}</h1><p class="hero-lead">${e(hero.lead)}</p><div class="hero-actions">${actions}</div><p class="hero-note">${e(content.meta.conceptStatus)}. ${e(hero.body)}</p></div>${heroFigure}</div><nav class="role-paths" aria-label="Быстрые входы по задачам"><span class="role-paths__label">${e(hero.routesLabel)}</span>${routes}</nav></div></section>`;
+  return pageShell({ title: content.meta.title, description: content.meta.description, current: 'home', body: heroHtml + content.sections.map(renderSection).join('\n') });
+}
+
+function inlineMarkdown(raw) {
+  let html = e(raw);
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+    const target = safeContentHref(href.replace(/&amp;/g, '&'));
+    return `<a href="${e(target)}"${/^https:\/\//i.test(target) ? ' class="external-link" title="Внешний ресурс"' : ''}>${label}</a>`;
+  });
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  return html;
+}
+
+function isBlockStart(line) {
+  return /^\s*$|^<a id="[^"]+"><\/a>$|^#{1,6} |^\|.*\|$|^[-*] |^\d+\. |^> |^---$/.test(line);
+}
+
+function parseMarkdown(md) {
+  const lines = md.replace(/\r\n/g, '\n').split('\n');
+  const out = [];
+  let i = 0;
+  let pendingId = '';
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    if (!line) { i++; continue; }
+    const anchor = line.match(/^<a id="([a-z0-9-]+)"><\/a>$/i);
+    if (anchor) { pendingId = anchor[1]; i++; continue; }
+    const heading = line.match(/^(#{1,6})\s+(.+)$/);
+    if (heading) {
+      const level = heading[1].length;
+      out.push(`<h${level}${pendingId ? ` id="${e(pendingId)}"` : ''}>${inlineMarkdown(heading[2])}</h${level}>`);
+      pendingId = ''; i++; continue;
+    }
+    if (line === '---') { out.push('<hr>'); i++; continue; }
+    if (/^\|.*\|$/.test(line) && /^\|[\s:|-]+\|$/.test((lines[i + 1] || '').trim())) {
+      const cells = row => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(cell => cell.trim());
+      const heads = cells(line);
+      i += 2;
+      const rows = [];
+      while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) { rows.push(cells(lines[i])); i++; }
+      out.push(`<div class="table-wrap"><table><thead><tr>${heads.map(cell => `<th>${inlineMarkdown(cell)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${inlineMarkdown(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+      continue;
+    }
+    if (/^[-*] /.test(line) || /^\d+\. /.test(line)) {
+      const ordered = /^\d+\. /.test(line);
+      const items = [];
+      while (i < lines.length && (ordered ? /^\d+\. / : /^[-*] /).test(lines[i].trim())) {
+        items.push(lines[i].trim().replace(ordered ? /^\d+\. / : /^[-*] /, '')); i++;
+      }
+      const tag = ordered ? 'ol' : 'ul';
+      out.push(`<${tag}>${items.map(item => `<li>${inlineMarkdown(item)}</li>`).join('')}</${tag}>`);
+      continue;
+    }
+    if (/^> /.test(line)) {
+      const quote = [];
+      while (i < lines.length && /^> /.test(lines[i].trim())) { quote.push(lines[i].trim().slice(2)); i++; }
+      out.push(`<blockquote><p>${inlineMarkdown(quote.join(' '))}</p></blockquote>`); continue;
+    }
+    const paragraph = [line]; i++;
+    while (i < lines.length && !isBlockStart(lines[i].trim())) { paragraph.push(lines[i].trim()); i++; }
+    out.push(`<p>${inlineMarkdown(paragraph.join(' '))}</p>`);
+  }
+  return out.join('\n');
+}
+
+function fullTextPage() {
+  const firstSection = fullText.indexOf('<a id="m1"></a>');
+  if (firstSection < 0) throw new Error('В полном тексте не найден якорь m1');
+  const mainMd = fullText.slice(firstSection);
+  const headings = [...mainMd.matchAll(/<a id="(m\d+|[ab])"><\/a>\s*\n##\s+(.+)/g)].map((match) => ({ id: match[1], title: match[2] }));
+  if (headings.filter(h => /^m\d+$/.test(h.id)).length !== 12) throw new Error('В полном тексте нужны 12 основных разделов');
+  const toc = `<aside class="document-toc" aria-label="Оглавление"><h2>Содержание</h2><ol>${headings.filter(h => /^m\d+$/.test(h.id)).map(h => `<li><a href="#${e(h.id)}">${e(h.title.replace(/^\d+\.\s*/, ''))}</a></li>`).join('')}</ol><p><a href="#a">Приложение А</a> · <a href="#b">Приложение Б</a></p></aside>`;
+  const body = `<header class="document-hero"><div class="container"><span class="eyebrow">${e(content.meta.conceptStatus)}</span><h1>${e(content.meta.title)}</h1><p>${e(content.meta.edition)}. Полный текст Концепции; правовая детализация, программа внедрения и проверка эффектов требуют дальнейшей работы.</p><a class="document-back" href="./index.html">← Вернуться к краткому изложению</a></div></header><div class="container document-layout">${toc}<article class="document-body">${parseMarkdown(mainMd)}</article></div>`;
+  return pageShell({ title: `Полный текст — ${content.meta.title}`, description: content.meta.description, current: 'concept', body });
+}
+
+function px(n) { return `${n}px`; }
+function tokenCss() {
+  const c = tokens.color;
+  const l = tokens.layout;
+  const font = tokens.font;
+  const lines = [':root {'];
+  Object.entries(c).forEach(([key, value]) => lines.push(`  --color-${key}: ${value};`));
+  const cssFamily = (value) => value.split(',').map(part => {
+    const name = part.trim();
+    return name.includes(' ') && !/^['"]/.test(name) ? `"${name}"` : name;
+  }).join(', ');
+  lines.push(`  --font-family: ${cssFamily(font.family)};`, `  --font-mono: ${cssFamily(font.mono)};`, `  --container-max: ${px(l.containerMax)};`);
+  Object.entries(l).filter(([key, value]) => typeof value === 'number').forEach(([key, value]) => lines.push(`  --layout-${key}: ${px(value)};`));
+  Object.entries(tokens.radius).forEach(([key, value]) => lines.push(`  --radius-${key}: ${px(value)};`));
+  Object.entries(tokens.shadow).forEach(([key, value]) => lines.push(`  --shadow-${key}: ${value};`));
+  for (const [name, val] of Object.entries(font.desktop)) {
+    lines.push(`  --type-${name}-size: ${px(val.size)};`, `  --type-${name}-line-height: ${px(val.lineHeight)};`, `  --type-${name}-tracking: ${px(val.tracking)};`, `  --type-${name}-weight: ${val.weight};`);
+  }
+  lines.push('}', '@media (max-width: 760px) {', '  :root {');
+  for (const [name, val] of Object.entries(font.mobile)) {
+    lines.push(`    --type-${name}-size: ${px(val.size)};`, `    --type-${name}-line-height: ${px(val.lineHeight)};`, `    --type-${name}-tracking: ${px(val.tracking)};`, `    --type-${name}-weight: ${val.weight};`);
+  }
+  lines.push('  }', '}');
+  return lines.join('\n');
+}
+
+await rm(distDir, { recursive: true, force: true });
+await mkdir(path.join(distDir, 'assets'), { recursive: true });
+await cp(assetsDir, path.join(distDir, 'assets'), { recursive: true });
+await writeFile(path.join(distDir, 'index.html'), landingPage());
+await writeFile(path.join(distDir, 'concept.html'), fullTextPage());
+await writeFile(path.join(distDir, 'tokens.css'), tokenCss());
+await cp(path.join(siteDir, 'src', 'style.css'), path.join(distDir, 'style.css'));
+await cp(path.join(siteDir, 'src', 'main.js'), path.join(distDir, 'main.js'));
+await cp(path.join(siteDir, 'src', 'favicon.svg'), path.join(distDir, 'favicon.svg'));
+console.log(`Сайт собран: ${distDir}`);

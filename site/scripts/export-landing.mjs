@@ -24,14 +24,21 @@ const lines = [
   '',
   content.hero.lead,
   '',
-  content.hero.body,
-  '',
+  ...(content.about ? [] : [content.hero.body, '']),
   content.hero.actions.map(item => `[${item.label}](${item.href})`).join(' · '),
   '',
-  `**${content.hero.routesLabel}** ${content.hero.routes.map(item => `[${item.label}](${item.href})`).join(' · ')}`,
-  '',
+  ...(content.about ? [] : [`**${content.hero.routesLabel}** ${content.hero.routes.map(item => `[${item.label}](${item.href})`).join(' · ')}`, '']),
   `*Подпись к визуалу:* ${content.hero.visualCaption}`,
 ];
+
+if (content.about) {
+  lines.push('', `## ${content.about.title} {#why}`, '', content.about.eyebrow, '', `**Кто мы.** ${content.about.who}`, '', `**Зачем.** ${content.about.why}`, '', `**Как.** ${content.about.how}`);
+}
+if (content.story) {
+  lines.push('', `## ${content.story.title} {#story}`, '', content.story.eyebrow);
+  for (const slide of content.story.slides) lines.push('', `### ${slide.number}. ${slide.title}`, '', slide.body);
+  lines.push('', `*Примечание к визуалу:* ${content.story.videoNote}`);
+}
 
 for (const section of content.sections) {
   lines.push('', `## ${section.title} {#${section.id}}`, '', section.intro);

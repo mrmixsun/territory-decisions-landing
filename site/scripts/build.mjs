@@ -115,19 +115,52 @@ function renderSection(section, index) {
 
 function header(current = 'home') {
   const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${e(item.label)}</a>`).join('');
-  return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу"><span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span></a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="./concept.html">Полный текст</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="./concept.html">Полный текст</a></nav></header>`;
+  const mark = content.meta.copyVersion?.startsWith('strict/s1.1')
+    ? '<span class="site-mark__monogram">ЦУ<span>РТ</span></span><span class="site-mark__wordmark">Цифровое управление<br>развитием территорий</span>'
+    : '<span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span>';
+  return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу">${mark}</a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="./concept.html">Полный текст</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="./concept.html">Полный текст</a></nav></header>`;
 }
 
 function footer() {
   return `<footer class="site-footer"><div class="container footer-inner"><p>${e(content.meta.footerNote)}</p><a href="./concept.html">Полный текст Концепции</a></div></footer>`;
 }
 
-function pageShell({ title, description, body, current }) {
+function pageShell({ title, description, body, current, bodyClass = '' }) {
   const figmaCapture = process.env.FIGMA_CAPTURE === '1' ? '<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>' : '';
-  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">${figmaCapture}</head><body><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">${figmaCapture}</head><body class="${e(bodyClass)}"><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
+}
+
+function landingPageS11() {
+  const { hero, about, story, sections } = content;
+  const byId = id => sections.find(section => section.id === id);
+  const card = (frame, type) => `<article class="s11-card s11-card--${type}" id="${e(frame.id)}"><div class="s11-card__top"><span class="s11-num">${e(frame.number)}</span><span class="s11-kicker">${e(frame.eyebrow)}</span></div><h3>${e(frame.title)}</h3><p>${e(frame.paragraphs[0])}</p><a href="${e(safeHref(frame.more?.href))}">Подробнее <span aria-hidden="true">↗</span></a></article>`;
+  const sectionTitle = (label, title, intro = '') => `<div class="s11-heading"><span class="s11-kicker">${e(label)}</span><h2>${e(title)}</h2>${intro ? `<p>${e(intro)}</p>` : ''}</div>`;
+  const sceneOverlay = [
+    '',
+    '<div class="s11-scene-tag s11-scene-tag--school"><span>01 · участок</span><strong>Школа</strong><small>Транспорт · сети · социальная инфраструктура</small></div>',
+    '<div class="s11-scene-gap"><div><span>Документ</span><strong>Утверждённое содержание</strong></div><b>↔</b><div><span>Система</span><strong>Отдельная копия данных</strong></div><small>Ручной перенос · расхождение версий</small></div>',
+    '<div class="s11-scene-link"><div><span>Версия данных</span><strong>Содержание решения</strong></div><b>↔</b><div><span>Правовое основание</span><strong>Акт уполномоченного субъекта</strong></div></div>'
+  ];
+  const slides = story.slides.map((slide, i) => `<article class="s11-story-slide${i === 0 ? ' is-active' : ''}" data-slide="${i}" ${i ? 'hidden' : ''}><div class="s11-story-copy"><span class="s11-step">${e(slide.number)} / 04 · ${e(slide.label)}</span><h3>${e(slide.title)}</h3><p>${e(slide.body)}</p></div><div class="s11-story-art s11-story-art--${i + 1}"><img src="${asset('territory-isometric.svg')}" alt="Изометрическая схема городской территории" loading="lazy">${sceneOverlay[i]}<span class="s11-art-marker">${e(slide.label)}</span></div></article>`).join('');
+  const tabs = story.slides.map((slide, i) => `<button type="button" class="s11-story-tab${i === 0 ? ' is-active' : ''}" data-story-tab="${i}" aria-label="Показать слайд ${i + 1}: ${e(slide.title)}" aria-selected="${i === 0}"><span>${e(slide.number)}</span>${e(slide.title)}</button>`).join('');
+  const principles = byId('how').frames;
+  const practice = byId('practice').frames;
+  const transition = byId('transition').frames[0];
+  const compatibility = byId('development').frames[0];
+  const materials = byId('materials').frames[0];
+  const body = `<section class="s11-hero" id="hero"><div class="container s11-hero__grid"><div class="s11-hero__copy"><span class="s11-kicker">${e(hero.eyebrow)}</span><h1><span>Цифровое управление</span><span>развитием территорий</span></h1><p>${e(hero.lead)}</p><div class="s11-actions"><a class="s11-button" href="#why">Изучить предложение <span aria-hidden="true">↗</span></a><a class="s11-button s11-button--outline" href="./concept.html">Полный текст</a></div><div class="s11-hero__meta"><span>01 / Концепция</span><span>Сентябрь 2026</span></div></div><figure class="s11-hero__visual"><img src="${asset('territory-isometric.svg')}" alt="${e(hero.visualCaption)}"><figcaption>Территория · данные · решение</figcaption></figure></div></section>
+  <section class="s11-section s11-about" id="why"><div class="container">${sectionTitle(about.eyebrow, about.title)}<div class="s11-about__grid"><div><span class="s11-num">01 / Кто мы</span><p>${e(about.who)}</p></div><div><span class="s11-num">02 / Зачем</span><p>${e(about.why)}</p></div><div><span class="s11-num">03 / Как</span><p>${e(about.how)}</p></div></div></div></section>
+  <section class="s11-section s11-section--mist s11-story" id="story"><div class="container">${sectionTitle(story.eyebrow, story.title)}<div class="s11-story-shell"><div class="s11-story-stage">${slides}</div><div class="s11-story-controls"><div class="s11-story-tabs" role="tablist" aria-label="Этапы истории">${tabs}</div><div class="s11-story-arrows"><button type="button" data-story-prev aria-label="Предыдущий слайд">←</button><button type="button" data-story-next aria-label="Следующий слайд">→</button></div></div></div><p class="s11-footnote">${e(story.videoNote)}</p></div></section>
+  <section class="s11-section" id="how"><div class="container">${sectionTitle('Принципы / 02', 'У решения должна быть точная цифровая основа', byId('how').intro)}<div class="s11-card-grid">${principles.map(f => card(f, 'principle')).join('')}</div><div class="s11-statement"><span>Структурированные данные и реестры</span><b>→</b><span>Юридически значимые цифровые решения</span><b>→</b><span>Аналитика и моделирование</span></div></div></section>
+  <section class="s11-section s11-section--mist" id="practice"><div class="container">${sectionTitle('В работе / 03', 'Связанные сведения помогают видеть последствия', byId('practice').intro)}<div class="s11-card-grid">${practice.map(f => card(f, 'case')).join('')}</div></div></section>
+  <section class="s11-section" id="transition"><div class="container">${sectionTitle('Этапы / 04', byId('transition').title, byId('transition').intro)}<div class="s11-phases">${transition.diagram.stages.map((s, i) => `<div class="s11-phase"><span class="s11-num">0${i + 1}</span><h3>${e(s)}</h3><p>${e([transition.paragraphs[0],transition.paragraphs[1],transition.diagram.caption][i])}</p></div>`).join('')}</div><p class="s11-footnote">Эффект оценивается с учётом переходных и регулярных затрат, а не по неподтверждённым цифрам экономии.</p></div></section>
+  <section class="s11-section s11-section--mist" id="development"><div class="container s11-split">${sectionTitle('Совместимость / 05', byId('development').title, byId('development').intro)}<div class="s11-split__card"><span class="s11-num">Общие правила</span><p>${e(compatibility.paragraphs[0])}</p><div class="s11-chips">${compatibility.diagram.sharedRules.map(x => `<span>${e(x)}</span>`).join('')}</div><p>${e(compatibility.paragraphs[1])}</p></div></div></section>
+  <section class="s11-section s11-materials" id="materials"><div class="container s11-materials__grid"><div>${sectionTitle('Материалы / 06', materials.title, byId('materials').intro)}<p>${e(materials.paragraphs[0])}</p></div><div class="s11-materials__action"><a class="s11-button" href="./concept.html">Читать полный текст <span aria-hidden="true">↗</span></a><span>${e(content.meta.footerNote)}</span></div></div></section>`;
+  return pageShell({title:content.meta.title,description:content.meta.description,current:'home',body,bodyClass:'landing--s11'});
 }
 
 function landingPage() {
+  if (content.meta.copyVersion?.startsWith('strict/s1.1')) return landingPageS11();
   const hero = content.hero;
   const actions = hero.actions.map(action => `<a class="button-link ${action.kind === 'secondary' ? 'button-link--secondary' : ''}" href="${e(safeHref(action.href))}">${e(action.label)}</a>`).join('');
   const routes = hero.routes.map(route => `<a href="${e(safeHref(route.href))}">${e(route.label)}</a>`).join('');

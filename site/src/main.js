@@ -28,3 +28,24 @@ if (menuButton && mobileNav) {
     if (window.innerWidth > 760) closeMenu();
   });
 }
+
+const story = document.querySelector('.s11-story');
+if (story) {
+  const slides = [...story.querySelectorAll('[data-slide]')];
+  const tabs = [...story.querySelectorAll('[data-story-tab]')];
+  let active = 0;
+  const show = next => {
+    active = (next + slides.length) % slides.length;
+    slides.forEach((slide, index) => {
+      slide.hidden = index !== active;
+      slide.classList.toggle('is-active', index === active);
+    });
+    tabs.forEach((tab, index) => {
+      tab.classList.toggle('is-active', index === active);
+      tab.setAttribute('aria-selected', String(index === active));
+    });
+  };
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => show(index)));
+  story.querySelector('[data-story-prev]')?.addEventListener('click', () => show(active - 1));
+  story.querySelector('[data-story-next]')?.addEventListener('click', () => show(active + 1));
+}

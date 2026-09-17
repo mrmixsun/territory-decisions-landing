@@ -60,7 +60,7 @@ function renderProcess(frame) {
   const d = frame.diagram;
   return `${frameTop(frame)}
     <div class="frame-intro">${frameCopy(frame)}</div>
-    <div class="comparison-intro"><div><h4>${e(d.beforeLabel)}</h4><p>Официальное содержание приходится повторно переносить и сверять между представлениями.</p></div><div><h4>${e(d.afterLabel)}</h4><p>Версия, процедура и правовое основание связаны в одном жизненном цикле.</p></div></div>
+    <div class="comparison-intro"><div><h4>${e(d.beforeLabel)}</h4><p>После утверждения содержание переносят заново. Появляются копии, которые нужно сравнивать.</p></div><div><h4>${e(d.afterLabel)}</h4><p>Видно, какая версия прошла процедуры и каким актом она утверждена.</p></div></div>
     ${diagramFigure(frame, 'process-comparison.svg', 'process-comparison-mobile.svg', `${d.beforeLabel}: ${d.beforeSteps.join(' → ')}. ${d.afterLabel}: ${d.afterSteps.join(' → ')}.`, 'diagram--wide')}
   </article>`;
 }
@@ -73,14 +73,14 @@ function renderTimeline(frame) {
 
 function renderLayers(frame) {
   const d = frame.diagram;
-  const layers = d.layers.map((layer, index) => `<div class="layer-card"><span class="layer-card__num">0${index + 1}</span><strong>${e(layer)}</strong><span class="status-label">${index === 0 ? 'Подтверждённый факт' : index === 1 ? 'Действует по основанию' : 'Пока проект'}</span></div>`).join('');
+  const layers = d.layers.map((layer, index) => `<div class="layer-card"><span class="layer-card__num">0${index + 1}</span><strong>${e(layer)}</strong><span class="status-label">${index === 0 ? 'Подтверждено' : index === 1 ? 'Уже действует' : 'Пока проект'}</span></div>`).join('');
   return `${frameTop(frame)}<div class="section-grid"><div>${frameCopy(frame)}</div><figure class="diagram diagram--html"><div class="diagram__image"><div class="layer-stack">${layers}</div><div class="metadata-strip">${d.metadata.map(item => `<span>${e(item)}</span>`).join('')}</div></div><figcaption>${e(d.caption)}</figcaption></figure></div></article>`;
 }
 
 function renderReview(frame) {
   const d = frame.diagram;
   const facts = d.fields.map(row => `<div><dt>${e(row.label)}</dt><dd>${e(row.value)}</dd></div>`).join('');
-  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div>${diagramFigure(frame, 'planning-check.svg', 'planning-check-mobile.svg', `Условный проект планировки и замечание: ${d.fields.map(x => `${x.label} — ${x.value}`).join('; ')}.`, 'diagram--wide')}<div class="example-card"><div><span class="micro-heading">Карточка замечания</span><dl class="example-facts">${facts}</dl></div><div class="example-card__note"><span class="status-label status-label--accent">Требует проверки</span><p>Сигнал связывается с объектом, правилом и версией источника; решение остаётся за человеком.</p></div></div></article>`;
+  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div>${diagramFigure(frame, 'planning-check.svg', 'planning-check-mobile.svg', `Условный проект планировки и замечание: ${d.fields.map(x => `${x.label} — ${x.value}`).join('; ')}.`, 'diagram--wide')}<div class="example-card"><div><span class="micro-heading">Что показывает проверка</span><dl class="example-facts">${facts}</dl></div><div class="example-card__note"><span class="status-label status-label--accent">Нужна проверка</span><p>Это сигнал для специалиста, а не автоматический отказ по проекту.</p></div></div></article>`;
 }
 
 function renderNetwork(frame) {
@@ -90,7 +90,7 @@ function renderNetwork(frame) {
 
 function renderStages(frame) {
   const d = frame.diagram;
-  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div><ol class="phase-list">${d.stages.map((stage, index) => `<li><strong>${e(stage)}</strong>${index === 0 ? '<p>Связать официальную версию, процедуры и акт.</p>' : index === 1 ? '<p>Расширять связи и актуализацию по мере готовности.</p>' : '<p>Развивать проверенные методы на надёжной основе.</p>'}</li>`).join('')}</ol><div class="paired-lists"><div><h4>${e(d.measureLabel)}</h4>${list(d.measures)}</div><div><h4>${e(d.costsLabel)}</h4>${list(d.costs)}</div></div><p class="diagram-alt">${e(d.caption)}</p></article>`;
+  return `${frameTop(frame)}<div class="frame-intro">${frameCopy(frame)}</div><ol class="phase-list">${d.stages.map((stage, index) => `<li><strong>${e(stage)}</strong>${index === 0 ? '<p>Не терять связь между содержанием решения и актом.</p>' : index === 1 ? '<p>Добавлять нужные сведения по мере готовности.</p>' : '<p>Строить выводы на проверенных данных.</p>'}</li>`).join('')}</ol><div class="paired-lists"><div><h4>${e(d.measureLabel)}</h4>${list(d.measures)}</div><div><h4>${e(d.costsLabel)}</h4>${list(d.costs)}</div></div><p class="diagram-alt">${e(d.caption)}</p></article>`;
 }
 
 function renderSystems(frame) {

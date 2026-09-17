@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1240" height="562" viewBox="0 0 1240 562" role="img" aria-labelledby="title desc">
-  <title id="title">От разорванного процесса к связанному цифровому жизненному циклу</title>
-  <desc id="desc">Сверху: проект и документы, процедуры и акт, отдельный перенос содержания в систему, повторная сверка. Снизу: исходные версии, проект и процедуры с доработкой, итоговая версия, однозначно связанная с актом, начало действия и применение с сохранением истории.</desc>
+  <title id="title">Когда связь между проектом и решением теряется — и когда она сохраняется</title>
+  <desc id="desc">Сверху: после принятия решения содержание заново переносят в систему и позже сравнивают копии. Снизу: исходные сведения, проект и проверки, итоговая версия, связанная с актом, применение и история изменений.</desc>
   <defs>
     <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1 1l6 3.5-6 3.5" fill="none" stroke="#8B8E91" stroke-width="1.6"/></marker>
     <marker id="arrowAccent" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1 1l6 3.5-6 3.5" fill="none" stroke="#6E405F" stroke-width="1.6"/></marker>
@@ -8,33 +8,33 @@
   <rect width="1240" height="562" rx="22" fill="#FFFFFF" stroke="#DCDDDC"/>
   <g font-family="Arial, Helvetica, sans-serif">
     <g id="broken-process">
-      <text x="40" y="51" font-size="12" font-weight="700" letter-spacing="1.5" fill="#62656B">ПРОБЛЕМНЫЙ ПРОЦЕСС · РАЗРЫВ СВЯЗЕЙ И ВЕРСИЙ</text>
+      <text x="40" y="51" font-size="12" font-weight="700" letter-spacing="1.5" fill="#62656B">КОГДА СВЯЗЬ ТЕРЯЕТСЯ</text>
       <g fill="#F7F6F2" stroke="#DCDDDC">
         <rect x="40" y="77" width="256" height="125" rx="12"/><rect x="341" y="77" width="256" height="125" rx="12"/><rect x="642" y="77" width="256" height="125" rx="12"/><rect x="943" y="77" width="256" height="125" rx="12"/>
       </g>
       <g fill="#202228" font-size="20" font-weight="700">
-        <text x="61" y="118">Проект и комплект</text><text x="61" y="144">документов</text>
-        <text x="362" y="118">Процедуры</text><text x="362" y="144">и акт</text>
-        <text x="663" y="118">Отдельный перенос</text><text x="663" y="144">в систему</text>
-        <text x="964" y="118">Новые выгрузки</text><text x="964" y="144">и сверка</text>
+        <text x="61" y="118">Проект</text><text x="61" y="144">и документы</text>
+        <text x="362" y="118">Согласование</text><text x="362" y="144">и решение</text>
+        <text x="663" y="118">Перенос данных</text><text x="663" y="144">в систему</text>
+        <text x="964" y="118">Новая выгрузка</text><text x="964" y="144">и сверка</text>
       </g>
-      <g fill="#62656B" font-size="13"><text x="61" y="181">документная редакция</text><text x="362" y="181">решение уполномоченного субъекта</text><text x="663" y="181">восстановление содержания</text><text x="964" y="181">связи приходится искать снова</text></g>
+      <g fill="#62656B" font-size="13"><text x="61" y="181">проектная версия</text><text x="362" y="181">акт принят</text><text x="663" y="181">содержание вводят заново</text><text x="964" y="181">копии сравнивают снова</text></g>
       <g fill="none" stroke="#8B8E91" stroke-width="2" marker-end="url(#arrow)"><path d="M304 139H332"/><path d="M605 139H633"/><path d="M906 139H934"/></g>
       <path d="M618 61V212" stroke="#6E405F" stroke-width="1.5" stroke-dasharray="5 5"/>
-      <text x="618" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#6E405F">здесь обрывается непрерывная связь</text>
+      <text x="618" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#6E405F">здесь теряется связь</text>
     </g>
     <path d="M40 269H1200" stroke="#DCDDDC"/>
     <g id="proposed-process">
-      <text x="40" y="314" font-size="12" font-weight="700" letter-spacing="1.5" fill="#6E405F">ПРЕДЛАГАЕТСЯ · ОФИЦИАЛЬНЫЙ ЖИЗНЕННЫЙ ЦИКЛ ВЕРСИЙ</text>
+      <text x="40" y="314" font-size="12" font-weight="700" letter-spacing="1.5" fill="#6E405F">КОГДА СВЯЗЬ СОХРАНЕНА</text>
       <g fill="#F7F6F2" stroke="#DCDDDC"><rect x="40" y="341" width="256" height="135" rx="12"/><rect x="341" y="341" width="256" height="135" rx="12"/><rect x="943" y="341" width="256" height="135" rx="12"/></g>
       <rect x="642" y="341" width="256" height="135" rx="12" fill="#EADFE7" stroke="#6E405F" stroke-width="2"/>
       <g fill="#202228" font-size="20" font-weight="700">
-        <text x="61" y="383">Исходные версии</text><text x="61" y="409">данных</text>
-        <text x="362" y="383">Проект, проверка</text><text x="362" y="409">и процедуры</text>
+        <text x="61" y="383">Исходные</text><text x="61" y="409">сведения</text>
+        <text x="362" y="383">Проект</text><text x="362" y="409">и проверки</text>
         <text x="663" y="383">Итоговая версия</text><text x="663" y="409">↔ акт</text>
-        <text x="964" y="383">Начало действия</text><text x="964" y="409">и применение</text>
+        <text x="964" y="383">Решение действует</text><text x="964" y="409">и меняется</text>
       </g>
-      <g fill="#62656B" font-size="13"><text x="61" y="453">содержание и происхождение</text><text x="362" y="453">с видимой доработкой</text><text x="663" y="453">однозначная связь</text><text x="964" y="453">изменение с историей</text></g>
+      <g fill="#62656B" font-size="13"><text x="61" y="453">видно, откуда взялись</text><text x="362" y="453">доработка остаётся видимой</text><text x="663" y="453">точно известно, что утверждено</text><text x="964" y="453">история не исчезает</text></g>
       <g fill="none" stroke="#6E405F" stroke-width="2" marker-end="url(#arrowAccent)"><path d="M304 408H332"/><path d="M605 408H633"/><path d="M906 408H934"/></g>
       <path d="M561 495H377" fill="none" stroke="#6E405F" stroke-width="1.6" marker-end="url(#arrowAccent)"/>
       <text x="469" y="518" text-anchor="middle" font-size="12" fill="#6E405F">возврат на доработку</text>

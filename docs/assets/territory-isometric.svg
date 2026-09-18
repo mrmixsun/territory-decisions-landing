@@ -6,14 +6,11 @@
     <linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#C8D3D6"/><stop offset="1" stop-color="#98ACB3"/></linearGradient>
     <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8DAFBA"/><stop offset="1" stop-color="#4F788C"/></linearGradient>
     <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#EBCBA6"/><stop offset="1" stop-color="#BD9273"/></linearGradient>
-    <filter id="shadow" x="-30%" y="-50%" width="160%" height="200%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#405B66" flood-opacity=".18"/></filter>
+    <filter id="shadow" x="-30%" y="-50%" width="160%" height="200%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#405B66" flood-opacity=".08"/></filter>
     <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#CEDBDD" stroke-width=".7"/></pattern>
   </defs>
-  <rect width="900" height="650" fill="#F1F5F4"/>
-  <path d="M0 50h900M0 100h900M0 150h900M0 200h900M0 250h900M0 300h900M0 350h900M0 400h900M0 450h900M0 500h900M0 550h900M0 600h900" stroke="#E5ECEA" stroke-width=".6"/>
   <g filter="url(#shadow)">
-    <path d="M90 335 436 123 825 337 478 552Z" fill="url(#ground)" stroke="#B8C9CB" stroke-width="2"/>
-    <path d="M90 335v30l388 217v-30Zm388 217v30l347-215v-30Z" fill="#ABBEC1"/>
+    <path d="M90 335 436 123 825 337 478 552Z" fill="url(#ground)" opacity=".53"/>
     <path d="M145 335 440 154 768 337 473 520Z" fill="url(#grid)" opacity=".7"/>
     <path d="m208 375 295-183 46 26-296 183Zm185 103 296-183 46 26-296 183Z" fill="#E4E2DC" stroke="#D0D7D4"/>
     <path d="m330 230 46-28 322 180-45 28Z" fill="#E8E5DF" stroke="#D0D7D4"/>

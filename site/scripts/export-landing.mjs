@@ -25,8 +25,7 @@ const lines = [
   content.hero.lead,
   '',
   ...(content.about ? [] : [content.hero.body, '']),
-  content.hero.actions.map(item => `[${item.label}](${item.href})`).join(' · '),
-  '',
+  ...(content.hero.actions.length ? [content.hero.actions.map(item => `[${item.label}](${item.href})`).join(' · '), ''] : []),
   ...(content.about ? [] : [`**${content.hero.routesLabel}** ${content.hero.routes.map(item => `[${item.label}](${item.href})`).join(' · ')}`, '']),
   `*Подпись к визуалу:* ${content.hero.visualCaption}`,
 ];
@@ -59,6 +58,7 @@ for (const section of content.sections) {
     if (frame.materials) {
       for (const material of frame.materials) lines.push('', `[${material.label}](${material.href}) — ${material.description}.`);
     }
+    if (frame.supportAction) lines.push('', `[${frame.supportAction.label}](${frame.supportAction.href}) — ${frame.supportAction.help}`);
     if (frame.contactLabel) lines.push('', `**${frame.contactLabel}.** ${frame.contactHelp || ''}`);
   }
 }

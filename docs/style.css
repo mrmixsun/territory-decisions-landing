@@ -281,6 +281,7 @@ a:hover { color: var(--color-accent); }
   .landing--imt .s11-story .s11-kicker { color: #60A5FA; }
   .landing--imt .s11-story .s11-heading h2 { color: #fff; }
   .landing--imt .s11-story .s11-heading p { color: #AEB8C4; }
+  .landing--imt .s11-story .s11-heading p + p { margin-top: 10px; }
   .landing--imt .s11-story-shell { overflow: hidden; border: 1px solid #29384A; border-radius: 11px; background: #0C1825; box-shadow: none; }
   .landing--imt .s11-story-stage,
   .landing--imt .s11-story-slide { min-height: 520px; }

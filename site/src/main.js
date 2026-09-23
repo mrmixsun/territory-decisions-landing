@@ -43,9 +43,17 @@ if (story) {
     tabs.forEach((tab, index) => {
       tab.classList.toggle('is-active', index === active);
       tab.setAttribute('aria-selected', String(index === active));
+      tab.setAttribute('tabindex', index === active ? '0' : '-1');
     });
   };
   tabs.forEach((tab, index) => tab.addEventListener('click', () => show(index)));
+  tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1);
+    show(next);
+    tabs[(next + tabs.length) % tabs.length].focus();
+  }));
   story.querySelector('[data-story-prev]')?.addEventListener('click', () => show(active - 1));
   story.querySelector('[data-story-next]')?.addEventListener('click', () => show(active + 1));
 }

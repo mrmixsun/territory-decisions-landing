@@ -14,6 +14,9 @@ const content = JSON.parse(await readFile(path.join(contentDir, 'landing.json'),
 const tokens = JSON.parse(await readFile(path.join(designDir, 'tokens.json'), 'utf8'));
 const fullText = await readFile(path.join(contentDir, 'full-text.md'), 'utf8');
 const assetNames = new Set(await readdir(assetsDir));
+const releaseTag = String(content.meta.copyVersion || 'current')
+  .match(/s\d+(?:\.\d+)?/)?.[0]
+  ?.replace('.', '-') || 'current';
 const buildDate = new Intl.DateTimeFormat('ru-RU', {
   day: '2-digit',
   month: 'long',
@@ -27,7 +30,8 @@ const safeContentHref = (href = '') => /^https:\/\//i.test(href) ? href : safeHr
 const e = (value = '') => esc(value);
 const para = (items = []) => items.map(item => `<p>${e(item)}</p>`).join('\n');
 const list = (items = []) => `<ul>${items.map(item => `<li>${e(item)}</li>`).join('')}</ul>`;
-const asset = (name) => `./assets/${name}`;
+const versioned = (href) => `${href}?v=${releaseTag}`;
+const asset = (name) => versioned(`./assets/${name}`);
 
 function picture(name, mobileName, alt, className = '') {
   if (!assetNames.has(name)) return '';
@@ -152,7 +156,7 @@ function footer() {
 
 function pageShell({ title, description, body, current, bodyClass = '' }) {
   const figmaCapture = process.env.FIGMA_CAPTURE === '1' ? '<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>' : '';
-  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">${figmaCapture}</head><body class="${e(bodyClass)}"><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="./main.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${e(title)}</title><meta name="description" content="${e(description)}"><link rel="icon" type="image/svg+xml" href="${versioned('./favicon.svg')}"><link rel="stylesheet" href="${versioned('./style.css')}">${figmaCapture}</head><body class="${e(bodyClass)}"><a class="skip-link" href="#main">К содержанию</a>${header(current)}<main id="main">${body}</main>${footer()}<script src="${versioned('./main.js')}" defer></script></body></html>`;
 }
 
 function landingPageS11() {

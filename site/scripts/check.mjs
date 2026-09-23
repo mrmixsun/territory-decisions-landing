@@ -13,13 +13,14 @@ for (const [file, html] of Object.entries(pages)) {
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
     if (/^(?:https:\/\/|mailto:|tel:)/.test(href)) continue;
     if (href.startsWith('#')) { if (!html.includes(`id="${href.slice(1)}"`)) throw new Error(`${file}: нет якоря ${href}`); continue; }
-    const [local, fragment] = href.replace(/^\.\//, '').split('#');
+    const [localWithQuery, fragment] = href.replace(/^\.\//, '').split('#');
+    const local = localWithQuery.split('?')[0];
     if (!local || local.endsWith('.css') || local.endsWith('.svg')) continue;
     if (!files.has(local)) throw new Error(`${file}: нет страницы ${local}`);
     if (fragment && !pages[local]?.includes(`id="${fragment}"`)) throw new Error(`${file}: нет якоря ${href}`);
   }
   for (const [, src] of html.matchAll(/(?:src|srcset)="([^"]+)"/g)) {
-    const local = src.replace(/^\.\//, '');
+    const local = src.replace(/^\.\//, '').split('?')[0];
     await stat(path.join(dist, local));
   }
 }

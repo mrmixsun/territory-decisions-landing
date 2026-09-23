@@ -115,11 +115,16 @@ function renderSection(section, index) {
 
 function header(current = 'home') {
   const navLabel = label => e(label).replace(/\u00a0/g, '&nbsp;');
-  const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${navLabel(item.label)}</a>`).join('');
+  const nav = content.nav.map(item => {
+    const target = item.href || `#${item.id}`;
+    const href = current === 'home' || !target.startsWith('#') ? target : `./index.html${target}`;
+    return `<a href="${e(safeHref(href))}">${navLabel(item.label)}</a>`;
+  }).join('');
+  const supportHref = current === 'home' ? '#materials' : './index.html#materials';
   const mark = content.meta.copyVersion?.startsWith('strict/s1.')
     ? '<span class="site-mark__monogram">ИМТ<span>.</span></span>'
     : '<span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span>';
-  return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу">${mark}</a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="./concept.html">Поддержать концепцию</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="./concept.html">Поддержать концепцию</a></nav></header>`;
+  return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу">${mark}</a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="${supportHref}">Поддержать концепцию</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="${supportHref}">Поддержать концепцию</a></nav></header>`;
 }
 
 function footer() {

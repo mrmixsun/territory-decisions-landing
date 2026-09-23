@@ -626,7 +626,9 @@ a:hover { color: var(--color-accent); }
   .landing--s11.landing--imt .header-inner { min-height: 82px; gap: 28px; }
   .landing--s11.landing--imt .site-mark { gap: 16px; color: #fff; font-size: 11px; line-height: 1.1; }
   .landing--s11.landing--imt .desktop-nav { gap: clamp(15px,1.45vw,25px); }
-  .landing--s11.landing--imt .desktop-nav a { color: #AEB8C4; font-size: 12px; font-weight: 500; }
+  .landing--s11.landing--imt .desktop-nav { align-items: stretch; gap: 0; }
+  .landing--s11.landing--imt .desktop-nav a { display: flex; align-items: center; width: 108px; min-height: 30px; padding: 0 13px; color: #AEB8C4; font-size: 10px; font-weight: 500; line-height: 1.15; white-space: normal; }
+  .landing--s11.landing--imt .desktop-nav a + a { border-left: 1px solid #2B394A; }
   .landing--s11.landing--imt .desktop-nav a:hover { color: #fff; }
   .landing--s11.landing--imt .header-full { color: #fff; font-size: 12px; border: 1px solid #324154; }
   .landing--s11.landing--imt .site-footer { background: #07111C; border: 0; }
@@ -656,7 +658,9 @@ a:hover { color: var(--color-accent); }
 .document--imt .site-mark__monogram { display: block; width: auto; height: auto; border: 0; background: transparent; color: #fff; font-size: 30px; font-weight: 800; line-height: .9; letter-spacing: -.07em; }
 .document--imt .site-mark__monogram span { color: #3B82F6; }
 .document--imt .site-mark__wordmark { max-width: 190px; color: #D8DEE6; font-size: 10px; font-weight: 500; line-height: 1.15; letter-spacing: .055em; text-transform: uppercase; }
-.document--imt .desktop-nav a { color: #AEB8C4; font-weight: 500; }
+.document--imt .desktop-nav { align-items: stretch; gap: 0; }
+.document--imt .desktop-nav a { display: flex; align-items: center; width: 108px; min-height: 30px; padding: 0 13px; color: #AEB8C4; font-size: 10px; font-weight: 500; line-height: 1.15; white-space: normal; }
+.document--imt .desktop-nav a + a { border-left: 1px solid #2B394A; }
 .document--imt .desktop-nav a:hover { color: #fff; }
 .document--imt .header-full { color: #fff; border-color: #324154; }
 .document--imt .document-hero { padding: 88px 0 58px; border: 0; background:
@@ -688,10 +692,10 @@ a:hover { color: var(--color-accent); }
 @media (min-width: 761px) and (max-width: 1400px) {
   .landing--s11.landing--imt .site-mark__wordmark,
   .document--imt .site-mark__wordmark { display: none; }
-  .landing--s11.landing--imt .desktop-nav,
-  .document--imt .desktop-nav { gap: 14px; }
-  .landing--s11.landing--imt .desktop-nav a,
-  .document--imt .desktop-nav a { font-size: 11px; }
+  .landing--s11.landing--imt .desktop-nav { gap: 0; }
+  .document--imt .desktop-nav { gap: 0; }
+  .landing--s11.landing--imt .desktop-nav a { font-size: 10px; }
+  .document--imt .desktop-nav a { font-size: 10px; }
   .landing--s11.landing--imt .header-full,
   .document--imt .header-full { padding: 9px 12px; font-size: 11px; }
 }

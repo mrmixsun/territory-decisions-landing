@@ -1,9 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="390" height="650" viewBox="0 0 390 650" role="img" aria-labelledby="title desc">
-  <title id="title">Связанный цифровой жизненный цикл</title><desc id="desc">Официальная редакция проходит процедуры и доработку, итоговая версия связывается с актом, затем применяется и изменяется.</desc>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#477889" stroke-width="1.5"/></marker></defs><rect width="390" height="650" rx="16" fill="#F4F9F8"/><g font-family="Arial,Helvetica,sans-serif"><text x="24" y="31" fill="#4D7D8F" font-size="10" font-weight="700" letter-spacing=".8">СВЯЗАННЫЙ ЦИФРОВОЙ ЖИЗНЕННЫЙ ЦИКЛ</text>
-    <g fill="#fff" stroke="#AFC7CB"><rect x="24" y="55" width="342" height="58" rx="9"/><rect x="24" y="139" width="342" height="58" rx="9"/><rect x="24" y="223" width="342" height="58" rx="9"/></g><rect x="24" y="307" width="342" height="58" rx="9" fill="#E1EEF0" stroke="#477889" stroke-width="2"/>
-    <g fill="#1D3442" font-size="13" font-weight="700"><text x="42" y="90">Исходные версии</text><text x="42" y="174">Официальная проектная редакция</text><text x="42" y="258">Проверка, согласование, обсуждение</text><text x="42" y="342">Итоговая версия ↔ акт</text></g><g fill="none" stroke="#477889" stroke-width="2" marker-end="url(#a)"><path d="M195 114v17"/><path d="M195 198v17"/><path d="M195 282v17"/></g><path d="M340 271c35 0 35-100 0-100" fill="none" stroke="#477889" stroke-width="1.8" marker-end="url(#a)"/><text x="326" y="221" text-anchor="end" fill="#477889" font-size="10" font-weight="700">доработка</text>
-    <g fill="#fff" stroke="#AFC7CB"><rect x="24" y="407" width="100" height="58" rx="8"/><rect x="145" y="407" width="100" height="58" rx="8"/><rect x="266" y="407" width="100" height="58" rx="8"/></g><g fill="#1D3442" font-size="11" font-weight="700"><text x="43" y="433">Начало</text><text x="43" y="450">действия</text><text x="166" y="442">Применение</text><text x="286" y="442">Изменение</text></g><g fill="none" stroke="#477889" stroke-width="2" marker-end="url(#a)"><path d="M124 436h12"/><path d="M246 436h12"/></g><path d="M195 366v33" fill="none" stroke="#477889" stroke-width="2" marker-end="url(#a)"/>
-    <g><rect x="24" y="503" width="342" height="36" rx="7" fill="#DCECEF"/><rect x="24" y="547" width="342" height="36" rx="7" fill="#D5E7E5"/><rect x="24" y="591" width="342" height="36" rx="7" fill="#E8E5D8"/><g text-anchor="middle" font-size="10" font-weight="700"><text x="195" y="526" fill="#2B596A">СТРУКТУРИРОВАННЫЕ ДАННЫЕ И РЕЕСТРЫ</text><text x="195" y="570" fill="#2B596A">ЮРИДИЧЕСКИ ЗНАЧИМЫЕ ЦИФРОВЫЕ РЕШЕНИЯ</text><text x="195" y="614" fill="#6F694D">АНАЛИТИКА И МОДЕЛИРОВАНИЕ</text></g></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="520" viewBox="0 0 390 520" role="img" aria-labelledby="title desc">
+  <title id="title">Целевой цифровой жизненный цикл</title>
+  <desc id="desc">Проектная версия проходит процедуры, замечания возвращают её к проекту, итоговая версия связывается с актом.</desc>
+  <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#E8EDF5"/></pattern><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0l9 4.5L0 9z" fill="#3B82F6"/></marker></defs>
+  <rect width="390" height="520" rx="18" fill="#F8FAFC"/><rect width="390" height="520" rx="18" fill="url(#g)"/>
+  <g font-family="Arial,sans-serif">
+    <text x="24" y="31" fill="#2563EB" font-size="11" font-weight="700" letter-spacing="1.2">ЦЕЛЕВОЙ ЦИФРОВОЙ КОНТУР</text>
+    <rect x="24" y="48" width="342" height="273" rx="13" fill="#EFF6FF" stroke="#93C5FD"/>
+    <text x="44" y="73" fill="#64748B" font-size="9" font-weight="700">ОФИЦИАЛЬНАЯ ПРОЕКТНАЯ РЕДАКЦИЯ</text>
+    <path d="M57 100v142" stroke="#3B82F6" stroke-width="3" marker-end="url(#a)"/>
+    <g fill="#FFF" stroke="#3B82F6" stroke-width="2"><circle cx="57" cy="100" r="9"/><circle cx="57" cy="136" r="9"/><circle cx="57" cy="172" r="9"/><circle cx="57" cy="208" r="9"/><circle cx="57" cy="244" r="9"/></g>
+    <g fill="#2563EB"><circle cx="57" cy="100" r="3.5"/><circle cx="57" cy="136" r="3.5"/><circle cx="57" cy="172" r="3.5"/><circle cx="57" cy="208" r="3.5"/><circle cx="57" cy="244" r="3.5"/></g>
+    <g fill="#111827" font-size="12" font-weight="700"><text x="81" y="104">Проект</text><text x="81" y="140">Проверка</text><text x="81" y="176">Согласование</text><text x="81" y="212">Обсуждение</text><text x="81" y="248">Доработка</text></g>
+    <path d="M57 255C57 276 333 276 333 100C333 82 57 82 57 90" fill="none" stroke="#2563EB" stroke-width="3.5" marker-end="url(#a)"/>
+    <rect x="165" y="155" width="160" height="40" rx="20" fill="#DBEAFE"/>
+    <text x="245" y="171" text-anchor="middle" fill="#1D4ED8" font-size="9" font-weight="700">ЗАМЕЧАНИЯ</text><text x="245" y="184" text-anchor="middle" fill="#1D4ED8" font-size="9" font-weight="700">ВОЗВРАЩАЮТ К ПРОЕКТУ</text>
+    <text x="195" y="296" text-anchor="middle" fill="#64748B" font-size="10">Процедуры связаны с конкретной версией</text>
+    <path d="M195 323v22" stroke="#3B82F6" stroke-width="3" marker-end="url(#a)"/>
+    <rect x="24" y="352" width="342" height="62" rx="11" fill="#0F172A"/>
+    <text x="44" y="377" fill="#93C5FD" font-size="10" font-weight="700">ИТОГОВАЯ ВЕРСИЯ</text><text x="44" y="398" fill="#FFF" font-size="16" font-weight="700">Данные · версия V1</text>
+    <path d="M195 416v22" stroke="#3B82F6" stroke-width="3" marker-end="url(#a)"/>
+    <rect x="24" y="444" width="342" height="57" rx="11" fill="#2563EB"/>
+    <text x="44" y="468" fill="#DBEAFE" font-size="10" font-weight="700">РЕШЕНИЕ УПОЛНОМОЧЕННОГО СУБЪЕКТА</text><text x="44" y="489" fill="#FFF" font-size="15" font-weight="700">Акт ↔ конкретная версия V1</text>
   </g>
 </svg>

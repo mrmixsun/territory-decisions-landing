@@ -1,45 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
-  <title id="title">Последствия разрыва жизненного цикла решения</title>
-  <desc id="desc">Разрыв версии связан с четырьмя последствиями: повторным сбором исходных сведений, ручной сверкой документов и данных, риском расхождения акта и рабочей версии, поздним обнаружением конфликтов и переделкой.</desc>
-  <rect width="760" height="460" rx="18" fill="#F8F5F1"/>
-  <g font-family="Arial, Helvetica, sans-serif">
-    <text x="34" y="39" fill="#4D7D8F" font-size="12" font-weight="700" letter-spacing="1.4">КАК РАЗРЫВ ПРОЯВЛЯЕТСЯ В РАБОТЕ</text>
-
-    <g stroke="#D6E2E0" fill="#FFFFFF">
-      <rect x="34" y="69" width="278" height="132" rx="12"/>
-      <rect x="448" y="69" width="278" height="132" rx="12"/>
-      <rect x="34" y="257" width="278" height="132" rx="12"/>
-      <rect x="448" y="257" width="278" height="132" rx="12"/>
-    </g>
-    <g fill="#DCEBED">
-      <circle cx="76" cy="111" r="21"/><circle cx="490" cy="111" r="21"/>
-    </g>
-    <g fill="#F1DED6">
-      <circle cx="76" cy="299" r="21"/><circle cx="490" cy="299" r="21"/>
-    </g>
-    <g fill="#2B6073" font-size="17" font-weight="700">
-      <text x="110" y="108">Повторный сбор</text><text x="110" y="132">исходных сведений</text>
-      <text x="524" y="108">Ручная сверка</text><text x="524" y="132">документов и данных</text>
-    </g>
-    <g fill="#8D5644" font-size="17" font-weight="700">
-      <text x="110" y="296">Риск расхождения</text><text x="110" y="320">акта и рабочей версии</text>
-      <text x="524" y="296">Поздний конфликт</text><text x="524" y="320">и переделка</text>
-    </g>
-    <g fill="#6A8088" font-size="12">
-      <text x="56" y="175">У участников оказываются разные наборы</text>
-      <text x="470" y="175">Проверки и сопоставление повторяются</text>
-      <text x="56" y="363">Нельзя сразу доказать тождество содержания</text>
-      <text x="470" y="363">Противоречие видно после важных решений</text>
-    </g>
-    <g fill="none" stroke="#A9BEc2" stroke-width="2">
-      <path d="M313 135h45M402 135h45M313 323h45M402 323h45M380 202v54"/>
-    </g>
-    <g transform="translate(336 178)">
-      <circle cx="44" cy="52" r="48" fill="#FFFFFF" stroke="#B36E52" stroke-width="2"/>
-      <path d="M18 52h21l10-10 12 20 10-10h17" fill="none" stroke="#B36E52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="44" y="120" text-anchor="middle" fill="#A15E48" font-size="11" font-weight="700" letter-spacing="1">РАЗРЫВ ВЕРСИИ</text>
-    </g>
-    <rect x="34" y="411" width="692" height="30" rx="6" fill="#EEEAE5"/>
-    <text x="380" y="431" text-anchor="middle" fill="#637880" font-size="11">Показан причинный механизм; масштаб и стоимость последствий требуют измерения.</text>
+  <title id="title">Последствия разрыва цифрового жизненного цикла</title><desc id="desc">Повторный сбор, ручная сверка, риск расхождений и поздние переделки возникают из одного разрыва.</desc>
+  <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#E8EDF5"/></pattern></defs>
+  <rect width="760" height="460" rx="18" fill="#F8FAFC"/><rect width="760" height="460" rx="18" fill="url(#grid)"/>
+  <g font-family="Arial,Helvetica,sans-serif"><text x="36" y="38" fill="#2563EB" font-size="12" font-weight="700" letter-spacing="1.5">ОДИН РАЗРЫВ — ЧЕТЫРЕ ГРУППЫ ПОСЛЕДСТВИЙ</text>
+    <g fill="#FFF" stroke="#CBD5E1"><rect x="36" y="66" width="320" height="126" rx="12"/><rect x="404" y="66" width="320" height="126" rx="12"/><rect x="36" y="218" width="320" height="126" rx="12"/><rect x="404" y="218" width="320" height="126" rx="12"/></g>
+    <g fill="#DBEAFE"><circle cx="68" cy="98" r="16"/><circle cx="436" cy="98" r="16"/><circle cx="68" cy="250" r="16"/><circle cx="436" cy="250" r="16"/></g>
+    <g fill="#2563EB" font-size="12" font-weight="700" text-anchor="middle"><text x="68" y="102">01</text><text x="436" y="102">02</text><text x="68" y="254">03</text><text x="436" y="254">04</text></g>
+    <g fill="#111827" font-size="16" font-weight="700"><text x="96" y="94">Повторный сбор</text><text x="96" y="115">исходных сведений</text><text x="464" y="94">Ручная сверка</text><text x="464" y="115">документов и данных</text><text x="96" y="246">Риск расхождения</text><text x="96" y="267">акта и рабочей версии</text><text x="464" y="246">Поздние конфликты</text><text x="464" y="267">и переделки</text></g>
+    <g fill="#64748B" font-size="12"><text x="58" y="145">Участники снова запрашивают то,</text><text x="58" y="162">что уже собиралось для решения.</text><text x="426" y="145">Связи и версии приходится</text><text x="426" y="162">восстанавливать вручную.</text><text x="58" y="297">Нельзя быстро подтвердить,</text><text x="58" y="314">какое содержание утверждено.</text><text x="426" y="297">Проблема обнаруживается, когда</text><text x="426" y="314">изменения уже стоят дорого.</text></g>
+    <rect x="36" y="370" width="688" height="54" rx="12" fill="#0F172A"/><circle cx="65" cy="397" r="9" fill="#F97316"/><text x="86" y="402" fill="#FFF" font-size="14" font-weight="700">Причина общая: содержание решения живёт в несвязанных представлениях.</text>
   </g>
 </svg>

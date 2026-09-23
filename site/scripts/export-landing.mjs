@@ -39,17 +39,21 @@ if (content.story) {
   lines.push('', `*Примечание к визуалу:* ${content.story.videoNote}`);
 }
 
-for (const section of content.sections) {
-  lines.push('', `## ${section.title} {#${section.id}}`, '', section.intro);
+  for (const section of content.sections) {
+  lines.push('', `## ${section.title} {#${section.id}}`, '', ...(section.notice ? [section.notice, ''] : []), section.intro);
   for (const frame of section.frames) {
     lines.push('', `### ${frame.number}. ${frame.title} {#${frame.id}}`, '', frame.eyebrow, '');
-    for (const paragraph of frame.paragraphs) lines.push(paragraph, '');
+    for (const paragraph of frame.paragraphs || []) lines.push(paragraph, '');
+    if (frame.route) lines.push(`**Маршрут:** ${frame.route.join(' → ')}`, '');
+    if (frame.steps) {
+      for (const step of frame.steps) lines.push(`**${step.label}.** ${step.text}`, '');
+    }
     if (frame.diagram) {
       const d = frame.diagram;
       lines.push(`**Схема «${d.id}».**`);
       for (const [label, value] of Object.entries(d)) {
         if (['id', 'type', 'caption', 'note'].includes(label)) continue;
-        lines.push(`- ${label}: ${Array.isArray(value) ? value.map(item => typeof item === 'object' ? `${item.label}: ${item.value}` : item).join(' → ') : value}`);
+        lines.push(`- ${label}: ${Array.isArray(value) ? value.map(item => typeof item === 'object' ? item.body && item.result ? `${item.body} Результат: ${item.result}` : `${item.label}: ${item.value}` : item).join(' → ') : value}`);
       }
       lines.push('', `*Подпись:* ${d.caption}`);
       if (d.note) lines.push('', `*Уточнение:* ${d.note}`);
@@ -58,7 +62,19 @@ for (const section of content.sections) {
     if (frame.materials) {
       for (const material of frame.materials) lines.push('', `[${material.label}](${material.href}) — ${material.description}.`);
     }
+    if (frame.contributions) {
+      lines.push('', '**Что можно прислать**', '');
+      for (const item of frame.contributions) lines.push(`- **${item.title}** — ${item.text}`);
+    }
+    if (frame.challenges) {
+      lines.push('', '**Основные сложности**', '');
+      for (const item of frame.challenges) lines.push(`- **${item.title}** — ${item.text}`);
+    }
+    if (frame.summary) lines.push('', `**Главное.** ${frame.summary}`);
     if (frame.supportAction) lines.push('', `[${frame.supportAction.label}](${frame.supportAction.href}) — ${frame.supportAction.help}`);
+    if (frame.contact) lines.push('', `**Контакт:** ${frame.contact.name}, ${frame.contact.role} — [${frame.contact.email}](mailto:${frame.contact.email}).`);
+    if (frame.future) lines.push('', `**Следующий этап.** ${frame.future}`);
+    if (frame.disclaimer) lines.push('', frame.disclaimer);
     if (frame.contactLabel) lines.push('', `**${frame.contactLabel}.** ${frame.contactHelp || ''}`);
   }
 }

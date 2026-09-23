@@ -1,30 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
-  <title id="title">Целевой цифровой жизненный цикл решения</title>
-  <desc id="desc">Официальная проектная версия проходит проверку, согласование, обсуждение и доработку. Замечания возвращают решение к проекту, а итоговая версия однозначно связывается с актом.</desc>
+  <title id="title">Целевой связанный жизненный цикл решения</title>
+  <desc id="desc">Исходные версии переходят в официальную проектную редакцию, которая проходит проверку, согласование, обсуждение и доработку. Итоговая версия однозначно связывается с актом, после чего учитываются начало действия, применение и изменение.</desc>
   <defs>
-    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#E8EDF5"/></pattern>
-    <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0l9 4.5L0 9z" fill="#3B82F6"/></marker>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#477889" stroke-width="1.5"/></marker>
   </defs>
-  <rect width="760" height="460" rx="18" fill="#F8FAFC"/><rect width="760" height="460" rx="18" fill="url(#grid)"/>
-  <g font-family="Arial,Helvetica,sans-serif">
-    <text x="36" y="38" fill="#2563EB" font-size="12" font-weight="700" letter-spacing="1.5">ЦЕЛЕВОЙ ЦИФРОВОЙ КОНТУР</text>
-    <rect x="48" y="66" width="664" height="220" rx="16" fill="#EFF6FF" stroke="#93C5FD"/>
-    <text x="76" y="94" fill="#64748B" font-size="10" font-weight="700" letter-spacing="1.2">ОФИЦИАЛЬНАЯ ПРОЕКТНАЯ РЕДАКЦИЯ</text>
-    <path d="M94 137h562" fill="none" stroke="#3B82F6" stroke-width="3" marker-end="url(#arr)"/>
-    <g fill="#FFF" stroke="#3B82F6" stroke-width="2.5"><circle cx="102" cy="137" r="14"/><circle cx="238" cy="137" r="14"/><circle cx="374" cy="137" r="14"/><circle cx="510" cy="137" r="14"/><circle cx="646" cy="137" r="14"/></g>
-    <g fill="#2563EB"><circle cx="102" cy="137" r="5"/><circle cx="238" cy="137" r="5"/><circle cx="374" cy="137" r="5"/><circle cx="510" cy="137" r="5"/><circle cx="646" cy="137" r="5"/></g>
-    <g fill="#111827" font-size="12" font-weight="700" text-anchor="middle"><text x="102" y="119">Проект</text><text x="238" y="119">Проверка</text><text x="374" y="119">Согласование</text><text x="510" y="119">Обсуждение</text><text x="646" y="119">Доработка</text></g>
-    <path d="M646 158C646 226 102 226 102 158" fill="none" stroke="#2563EB" stroke-width="3.5" marker-end="url(#arr)"/>
-    <rect x="233" y="188" width="294" height="31" rx="15.5" fill="#DBEAFE"/>
-    <text x="380" y="208" text-anchor="middle" fill="#1D4ED8" font-size="11" font-weight="700">ЗАМЕЧАНИЯ ВОЗВРАЩАЮТ К ПРОЕКТУ</text>
-    <text x="380" y="252" text-anchor="middle" fill="#64748B" font-size="11">Все процедуры и изменения остаются связаны с конкретной версией</text>
-    <path d="M380 287v31" stroke="#3B82F6" stroke-width="3" marker-end="url(#arr)"/>
-    <rect x="72" y="329" width="270" height="90" rx="14" fill="#0F172A"/>
-    <text x="207" y="359" text-anchor="middle" fill="#93C5FD" font-size="11" font-weight="700" letter-spacing="1">ИТОГОВАЯ ВЕРСИЯ</text>
-    <text x="207" y="388" text-anchor="middle" fill="#FFF" font-size="18" font-weight="700">Данные · версия V1</text>
-    <path d="M343 374h66" stroke="#3B82F6" stroke-width="4" marker-end="url(#arr)"/>
-    <rect x="410" y="329" width="278" height="90" rx="14" fill="#2563EB"/>
-    <text x="549" y="359" text-anchor="middle" fill="#DBEAFE" font-size="11" font-weight="700" letter-spacing="1">РЕШЕНИЕ СУБЪЕКТА</text>
-    <text x="549" y="388" text-anchor="middle" fill="#FFF" font-size="18" font-weight="700">Акт ↔ версия V1</text>
+  <rect width="760" height="460" rx="18" fill="#F4F9F8"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="34" y="39" fill="#4D7D8F" font-size="12" font-weight="700" letter-spacing="1.4">СВЯЗАННЫЙ ЦИФРОВОЙ ЖИЗНЕННЫЙ ЦИКЛ</text>
+
+    <g fill="#FFFFFF" stroke="#AFC7CB">
+      <rect x="34" y="72" width="146" height="72" rx="10"/>
+      <rect x="218" y="72" width="162" height="72" rx="10"/>
+      <rect x="418" y="72" width="168" height="72" rx="10"/>
+    </g>
+    <rect x="624" y="72" width="102" height="72" rx="10" fill="#E1EEF0" stroke="#477889" stroke-width="2"/>
+    <g fill="#1D3442" font-size="15" font-weight="700">
+      <text x="53" y="103">Исходные</text><text x="53" y="124">версии</text>
+      <text x="237" y="103">Официальная</text><text x="237" y="124">редакция</text>
+      <text x="437" y="103">Процедуры</text><text x="437" y="124">и доработка</text>
+      <text x="646" y="103">Итоговая</text><text x="650" y="124">версия</text>
+    </g>
+    <g fill="none" stroke="#477889" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M181 108h28"/><path d="M381 108h28"/><path d="M587 108h28"/>
+    </g>
+    <path d="M551 153c0 48-62 61-125 42-55-17-103-14-128 10v-49" fill="none" stroke="#477889" stroke-width="1.8" marker-end="url(#arrow)"/>
+    <text x="437" y="183" text-anchor="middle" fill="#477889" font-size="11" font-weight="700">ВОЗВРАТ НА ДОРАБОТКУ</text>
+
+    <path d="M675 153v45" fill="none" stroke="#477889" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="555" y="210" width="171" height="62" rx="10" fill="#DCECEF" stroke="#477889" stroke-width="2"/>
+    <text x="640" y="235" text-anchor="middle" fill="#2B596A" font-size="14" font-weight="700">Версия данных ↔ акт</text>
+    <text x="640" y="255" text-anchor="middle" fill="#5E7780" font-size="11">однозначная связь</text>
+
+    <g fill="#FFFFFF" stroke="#AFC7CB">
+      <rect x="34" y="304" width="181" height="65" rx="10"/>
+      <rect x="290" y="304" width="181" height="65" rx="10"/>
+      <rect x="546" y="304" width="180" height="65" rx="10"/>
+    </g>
+    <g fill="#1D3442" font-size="14" font-weight="700">
+      <text x="67" y="343">Начало действия</text><text x="339" y="343">Применение</text><text x="603" y="343">Изменение</text>
+    </g>
+    <g fill="none" stroke="#477889" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M640 274c0 18-29 23-78 23H125v-1"/><path d="M216 336h65"/><path d="M472 336h65"/>
+    </g>
+
+    <g transform="translate(34 401)">
+      <rect width="208" height="38" rx="7" fill="#DCECEF"/><rect x="226" width="253" height="38" rx="7" fill="#D5E7E5"/><rect x="497" width="229" height="38" rx="7" fill="#E8E5D8"/>
+      <text x="104" y="24" text-anchor="middle" fill="#2B596A" font-size="11" font-weight="700">ДАННЫЕ И РЕЕСТРЫ</text>
+      <text x="352" y="24" text-anchor="middle" fill="#2B596A" font-size="11" font-weight="700">ЦИФРОВЫЕ РЕШЕНИЯ</text>
+      <text x="612" y="24" text-anchor="middle" fill="#6F694D" font-size="11" font-weight="700">АНАЛИТИКА И МОДЕЛИРОВАНИЕ</text>
+      <text x="216" y="25" text-anchor="middle" fill="#477889" font-size="18">→</text><text x="487" y="25" text-anchor="middle" fill="#477889" font-size="18">→</text>
+    </g>
   </g>
 </svg>

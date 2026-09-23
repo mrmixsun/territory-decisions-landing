@@ -11,7 +11,7 @@ for (const [file, html] of Object.entries(pages)) {
   if ((html.match(/<h1\b/g) || []).length !== 1) throw new Error(`${file}: должна быть одна h1`);
   for (const target of ['style.css', 'tokens.css', 'main.js', 'favicon.svg']) if (!files.has(target)) throw new Error(`Нет ${target}`);
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
-    if (/^(?:https:\/\/|mailto:|tel:)/.test(href)) continue;
+    if (/^https:\/\//.test(href)) continue;
     if (href.startsWith('#')) { if (!html.includes(`id="${href.slice(1)}"`)) throw new Error(`${file}: нет якоря ${href}`); continue; }
     const [local, fragment] = href.replace(/^\.\//, '').split('#');
     if (!local || local.endsWith('.css') || local.endsWith('.svg')) continue;

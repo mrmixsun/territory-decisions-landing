@@ -1,15 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
-  <title id="title">Корневой дефект — разрыв цифрового жизненного цикла</title><desc id="desc">Документная версия решения и данные в системах расходятся из-за ручного переноса.</desc>
-  <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#E8EDF5"/></pattern><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#3B82F6" stroke-width="1.6"/></marker></defs>
-  <rect width="760" height="460" rx="18" fill="#F8FAFC"/><rect width="760" height="460" rx="18" fill="url(#grid)"/>
-  <g font-family="Arial,Helvetica,sans-serif">
-    <text x="36" y="38" fill="#2563EB" font-size="12" font-weight="700" letter-spacing="1.5">ОДНО РЕШЕНИЕ — РАЗНЫЕ ВЕРСИИ</text>
-    <text x="36" y="80" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1">ДОКУМЕНТНЫЙ КОНТУР</text>
-    <g fill="#FFF" stroke="#CBD5E1"><rect x="205" y="57" width="140" height="58" rx="10"/><rect x="385" y="57" width="150" height="58" rx="10"/><rect x="575" y="57" width="149" height="58" rx="10"/></g><g fill="#111827" font-size="14" font-weight="700" text-anchor="middle"><text x="275" y="92">Версия A</text><text x="460" y="92">Согласование</text><text x="649" y="92">Акт</text></g><g stroke="#3B82F6" stroke-width="2" marker-end="url(#arr)"><path d="M346 86h30"/><path d="M536 86h30"/></g>
-    <text x="36" y="313" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1">ЦИФРОВОЙ КОНТУР</text>
-    <g fill="#FFF" stroke="#93C5FD"><rect x="205" y="290" width="140" height="58" rx="10"/><rect x="385" y="290" width="150" height="58" rx="10"/><rect x="575" y="290" width="149" height="58" rx="10"/></g><g fill="#111827" font-size="14" font-weight="700" text-anchor="middle"><text x="275" y="325">Набор A′</text><text x="460" y="325">Обновление</text><text x="649" y="325">Набор A″</text></g><g stroke="#3B82F6" stroke-width="2" marker-end="url(#arr)"><path d="M346 319h30"/><path d="M536 319h30"/></g>
-    <g stroke="#F97316" stroke-width="2" stroke-dasharray="5 5"><path d="M275 120v62"/><path d="M275 222v62"/><path d="M460 120v62"/><path d="M460 222v62"/><path d="M649 120v62"/><path d="M649 222v62"/></g>
-    <rect x="254" y="169" width="412" height="67" rx="14" fill="#FFF3EB" stroke="#FDBA74"/><circle cx="291" cy="202" r="20" fill="#F97316"/><path d="M283 194l16 16m0-16l-16 16" stroke="#FFF" stroke-width="3" stroke-linecap="round"/><text x="326" y="196" fill="#C2410C" font-size="15" font-weight="700">Разрыв цифрового жизненного цикла</text><text x="326" y="216" fill="#9A3412" font-size="12">Повторный ввод, ручная сверка, новая выгрузка</text>
-    <g font-size="12" font-weight="700" text-anchor="middle"><rect x="36" y="382" width="210" height="42" rx="9" fill="#0F172A"/><rect x="275" y="382" width="210" height="42" rx="9" fill="#0F172A"/><rect x="514" y="382" width="210" height="42" rx="9" fill="#0F172A"/><text x="141" y="408" fill="#FFF">Что рассматривали?</text><text x="380" y="408" fill="#FFF">Что утвердили?</text><text x="619" y="408" fill="#FFF">Что действует сейчас?</text></g>
+  <title id="title">Корневой дефект — разрыв связи между представлениями решения</title>
+  <desc id="desc">В документном контуре согласуется версия A и принимается акт. В цифровом контуре появляются наборы A штрих и A два штриха. Ручные переносы, сверка и повторный ввод не гарантируют тождество версий.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#6C8792" stroke-width="1.5"/></marker>
+    <marker id="arrowWarm" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#B36E52" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="760" height="460" rx="18" fill="#F8F7F3"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="34" y="39" fill="#4D7D8F" font-size="12" font-weight="700" letter-spacing="1.4">ОДНО РЕШЕНИЕ — НЕСКОЛЬКО ПРЕДСТАВЛЕНИЙ</text>
+
+    <text x="34" y="91" fill="#6A8088" font-size="12" font-weight="700" letter-spacing="1">ДОКУМЕНТНЫЙ КОНТУР</text>
+    <g fill="#FFFFFF" stroke="#C8D8D8">
+      <rect x="211" y="64" width="128" height="58" rx="9"/>
+      <rect x="386" y="64" width="152" height="58" rx="9"/>
+      <rect x="585" y="64" width="141" height="58" rx="9"/>
+    </g>
+    <g fill="#1D3442" font-size="15" font-weight="700">
+      <text x="238" y="99">Версия A</text><text x="408" y="99">Согласование</text><text x="631" y="99">Акт</text>
+    </g>
+    <g fill="none" stroke="#6C8792" stroke-width="2" marker-end="url(#arrow)"><path d="M340 93h37"/><path d="M539 93h37"/></g>
+
+    <text x="34" y="367" fill="#6A8088" font-size="12" font-weight="700" letter-spacing="1">ЦИФРОВОЙ КОНТУР</text>
+    <g fill="#EEF4F3" stroke="#9DB8BF">
+      <rect x="211" y="338" width="128" height="58" rx="9"/>
+      <rect x="386" y="338" width="152" height="58" rx="9"/>
+      <rect x="585" y="338" width="141" height="58" rx="9"/>
+    </g>
+    <g fill="#2B596A" font-size="15" font-weight="700">
+      <text x="232" y="373">Набор A′</text><text x="410" y="373">Обновление</text><text x="607" y="373">Набор A″</text>
+    </g>
+    <g fill="none" stroke="#6C8792" stroke-width="2" marker-end="url(#arrow)"><path d="M340 367h37"/><path d="M539 367h37"/></g>
+
+    <path d="M275 132v73M275 255v73M462 132v73M462 255v73M655 132v73M655 255v73" fill="none" stroke="#B36E52" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrowWarm)"/>
+    <g fill="#A15E48" font-size="11" font-weight="700">
+      <text x="288" y="167">повторный ввод</text><text x="475" y="167">ручная сверка</text><text x="668" y="167">выгрузка</text>
+    </g>
+
+    <g transform="translate(278 197)">
+      <path d="M0 32h76l16-16 16 16h76" fill="none" stroke="#B36E52" stroke-width="3"/>
+      <circle cx="92" cy="16" r="34" fill="#F4E5DF" stroke="#B36E52" stroke-width="2"/>
+      <path d="M82 6l20 20m0-20L82 26" stroke="#B36E52" stroke-width="3" stroke-linecap="round"/>
+      <text x="92" y="68" text-anchor="middle" fill="#A15E48" font-size="12" font-weight="700" letter-spacing="1">РАЗРЫВ ВЕРСИЙ</text>
+    </g>
+    <rect x="34" y="414" width="692" height="28" rx="6" fill="#F1E5DF"/>
+    <text x="380" y="433" text-anchor="middle" fill="#8D5644" font-size="12" font-weight="700">Что рассматривали? Что утвердили? С какой версией работают сейчас?</text>
   </g>
 </svg>

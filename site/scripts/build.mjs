@@ -114,7 +114,8 @@ function renderSection(section, index) {
 }
 
 function header(current = 'home') {
-  const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${e(item.label)}</a>`).join('');
+  const navLabel = label => e(label).replace(/\u00a0/g, '&nbsp;');
+  const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${navLabel(item.label)}</a>`).join('');
   const mark = content.meta.copyVersion?.startsWith('strict/s1.')
     ? '<span class="site-mark__monogram">ИМТ<span>.</span></span><span class="site-mark__wordmark">Информационная модель<br>территории</span>'
     : '<span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span>';

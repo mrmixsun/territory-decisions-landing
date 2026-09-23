@@ -255,7 +255,7 @@ a:hover { color: var(--color-accent); }
   .landing--imt .s11-hero__copy { position: relative; z-index: 2; padding: 0; }
   .landing--imt .s11-kicker,
   .landing--imt .s11-num { color: var(--imt-blue); font-size: 11px; font-weight: 700; letter-spacing: .085em; }
-  .landing--imt .s11-hero h1 { margin: 28px 0 26px; color: var(--imt-ink); font-size: clamp(54px,4.65vw,72px); font-weight: 800; line-height: .98; letter-spacing: -.052em; }
+  .landing--imt .s11-hero h1 { margin: 28px 0 26px; color: var(--imt-ink); font-size: 52px; font-weight: 800; line-height: .98; letter-spacing: -.052em; }
   .landing--imt .s11-hero__copy > p span { display: block; }
   .landing--imt .s11-hero__copy > p span + span { margin-top: 8px; }
   .landing--imt .s11-hero__copy > p { max-width: 590px; color: var(--imt-slate); font-size: 19px; line-height: 1.45; }

@@ -14,6 +14,8 @@
 
 Версии текста лендинга сохранены в [content/versions/](content/versions/README.md). Активную редакцию сайт берёт из `content/landing.json`.
 
+Визуальная итерация по референсу ИМТ описана в [design/2026-09-23__imt-reference-blue.md](design/2026-09-23__imt-reference-blue.md). Состояние до редизайна сохранено в ветке `archive/pre-imt-redesign-2026-09-23`.
+
 Строгие редакции `s1.0` и `s1.1-desktop` вынесены на отдельные страницы [Figma для комментариев](https://www.figma.com/design/lOlDkmqAITDsVrbvJh5NRK). Порядок работы и ограничения переноса описаны в [design/figma-review.md](design/figma-review.md). Редакция `s1.2-desktop` учитывает новые комментарии и опубликована на GitHub Pages 18.09.2026, но ещё не переносилась в Figma. Следующие редакции не отправляются в публичный репозиторий без согласования.
 
 ## Просмотр и публикационная копия

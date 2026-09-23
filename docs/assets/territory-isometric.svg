@@ -5,7 +5,7 @@
     <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7FAF9"/><stop offset="1" stop-color="#DCE8E8"/></linearGradient>
     <linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#C8D3D6"/><stop offset="1" stop-color="#98ACB3"/></linearGradient>
     <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8DAFBA"/><stop offset="1" stop-color="#4F788C"/></linearGradient>
-    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#EBCBA6"/><stop offset="1" stop-color="#BD9273"/></linearGradient>
+    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#BFDBFE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
     <filter id="shadow" x="-30%" y="-50%" width="160%" height="200%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#405B66" flood-opacity=".08"/></filter>
     <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#CEDBDD" stroke-width=".7"/></pattern>
   </defs>
@@ -29,21 +29,21 @@
       <path d="m555 327 42-25 36 20-42 25Z" fill="#E8EFEC" stroke="#8EA8AD"/><path d="m555 327v-62l36 20v62Z" fill="url(#front)" stroke="#8EA8AD"/><path d="m591 347 42-25v-62l-42 25Z" fill="#9AB2B7" stroke="#8EA8AD"/><path d="m555 265 42-25 36 20-42 25Z" fill="#F3F7F3" stroke="#8EA8AD"/>
       <path d="m258 347 38-24 35 19-38 24Z" fill="#E7EEEB" stroke="#8EA8AD"/><path d="m258 347v-48l35 19v48Z" fill="#BBCBCD" stroke="#8EA8AD"/><path d="m293 366 38-24v-48l-38 24Z" fill="#91ADB4" stroke="#8EA8AD"/><path d="m258 299 38-24 35 19-38 24Z" fill="#F3F7F3" stroke="#8EA8AD"/>
       <path d="m345 389 39-24 36 20-39 24Z" fill="#E7EEEB" stroke="#8EA8AD"/><path d="m345 389v-66l36 20v66Z" fill="#AEC3C6" stroke="#8EA8AD"/><path d="m381 409 39-24v-66l-39 24Z" fill="#8EAAB2" stroke="#8EA8AD"/><path d="m345 323 39-24 36 20-39 24Z" fill="#F2F6F2" stroke="#8EA8AD"/>
-      <path d="m517 399 42-26 35 20-42 26Z" fill="#F2E6D6" stroke="#BD9273"/><path d="m517 399v-53l35 20v53Z" fill="url(#warm)" stroke="#B88869"/><path d="m552 419 42-26v-53l-42 26Z" fill="#C49A78" stroke="#B88869"/><path d="m517 346 42-26 35 20-42 26Z" fill="#F9E9D2" stroke="#B88869"/>
+      <path d="m517 399 42-26 35 20-42 26Z" fill="#DBEAFE" stroke="#3B82F6"/><path d="m517 399v-53l35 20v53Z" fill="url(#warm)" stroke="#2563EB"/><path d="m552 419 42-26v-53l-42 26Z" fill="#2563EB" stroke="#1D4ED8"/><path d="m517 346 42-26 35 20-42 26Z" fill="#EFF6FF" stroke="#3B82F6"/>
       <path d="m576 379 32-20 28 16-32 20Z" fill="#EDF3F0" stroke="#97ACAE"/><path d="m576 379v-37l28 16v37Z" fill="#B3C5C4" stroke="#97ACAE"/><path d="m604 395 32-20v-37l-32 20Z" fill="#92ABAD" stroke="#97ACAE"/><path d="m576 342 32-20 28 16-32 20Z" fill="#F8FAF6" stroke="#97ACAE"/>
     </g>
     <g fill="none" stroke-width="3">
-      <path d="m551 366 52-32 45 25" stroke="#B8674F" stroke-dasharray="6 6"/>
+      <path d="m551 366 52-32 45 25" stroke="#3B82F6" stroke-dasharray="6 6"/>
       <path d="m551 366-67-38-68 42" stroke="#537C92" stroke-dasharray="6 6"/>
-      <path d="m551 366 61 34 52-32" stroke="#C99959" stroke-dasharray="6 6"/>
+      <path d="m551 366 61 34 52-32" stroke="#60A5FA" stroke-dasharray="6 6"/>
     </g>
     <g fill="#F7FAF7" stroke-width="3">
-      <circle cx="551" cy="366" r="10" stroke="#B8674F"/><circle cx="416" cy="370" r="7" stroke="#537C92"/><circle cx="664" cy="368" r="7" stroke="#C99959"/>
+      <circle cx="551" cy="366" r="10" stroke="#3B82F6"/><circle cx="416" cy="370" r="7" stroke="#537C92"/><circle cx="664" cy="368" r="7" stroke="#60A5FA"/>
     </g>
   </g>
   <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#29475B">
     <path d="M598 138h165" stroke="#7392A1"/><circle cx="598" cy="138" r="4" fill="#7392A1"/><text x="605" y="128">ДАННЫЕ И ВЕРСИИ</text>
-    <path d="M130 504h204" stroke="#BE8063"/><circle cx="334" cy="504" r="4" fill="#BE8063"/><text x="130" y="493">ИЗМЕНЕНИЕ УЧАСТКА</text>
-    <path d="M619 516h149" stroke="#C69D69"/><circle cx="619" cy="516" r="4" fill="#C69D69"/><text x="625" y="506">ИНФРАСТРУКТУРА</text>
+    <path d="M130 504h204" stroke="#3B82F6"/><circle cx="334" cy="504" r="4" fill="#3B82F6"/><text x="130" y="493">ИЗМЕНЕНИЕ УЧАСТКА</text>
+    <path d="M619 516h149" stroke="#60A5FA"/><circle cx="619" cy="516" r="4" fill="#60A5FA"/><text x="625" y="506">ИНФРАСТРУКТУРА</text>
   </g>
 </svg>

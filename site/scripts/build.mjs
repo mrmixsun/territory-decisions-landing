@@ -116,7 +116,7 @@ function renderSection(section, index) {
 function header(current = 'home') {
   const nav = content.nav.map(item => `<a href="${current === 'home' ? `#${e(item.id)}` : `./index.html#${e(item.id)}`}">${e(item.label)}</a>`).join('');
   const mark = content.meta.copyVersion?.startsWith('strict/s1.')
-    ? '<span class="site-mark__monogram">ЦУ<span>РТ</span></span><span class="site-mark__wordmark">Цифровое управление<br>развитием территорий</span>'
+    ? '<span class="site-mark__monogram">ИМТ<span>.</span></span><span class="site-mark__wordmark">Информационная модель<br>территории</span>'
     : '<span class="site-mark__symbol" aria-hidden="true">⌖</span><span>Территория и решения</span>';
   return `<header class="site-header"><div class="container header-inner"><a class="site-mark" href="./index.html" aria-label="На главную страницу">${mark}</a><nav class="desktop-nav" aria-label="Разделы сайта">${nav}</nav><a class="header-full text-link" href="./concept.html">Полный текст</a><button class="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true"></span></button></div><nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация">${nav}<a href="./concept.html">Полный текст</a></nav></header>`;
 }
@@ -150,7 +150,7 @@ function landingPageS11() {
   <section class="s11-section s11-section--mist" id="development"><div class="container s11-split">${sectionTitle('Совместимость / 05', byId('development').title, byId('development').intro)}<div class="s11-split__card"><span class="s11-num">Общие правила</span><p>${e(compatibility.paragraphs[0])}</p><div class="s11-chips">${compatibility.diagram.sharedRules.map(x => `<span>${e(x)}</span>`).join('')}</div><p>${e(compatibility.paragraphs[1])}</p></div></div></section>
   <section class="s11-section s11-materials" id="materials"><div class="container s11-materials__grid"><div>${sectionTitle('Материалы / 06', materials.title, byId('materials').intro)}<p>${e(materials.paragraphs[0])}</p></div><div class="s11-materials__action"><a class="s11-button" href="${e(safeHref(materials.supportAction.href))}">${e(materials.supportAction.label)} <span aria-hidden="true">↗</span></a><span>${e(materials.supportAction.help)}</span><span>${e(content.meta.footerNote)}</span></div></div></section>
   <section class="s11-section s11-about" id="why"><div class="container">${sectionTitle(about.eyebrow, about.title)}<div class="s11-about__grid"><div><span class="s11-num">01 / Кто мы</span><p>${e(about.who)}</p></div><div><span class="s11-num">02 / Зачем</span><p>${e(about.why)}</p></div><div><span class="s11-num">03 / Как</span><p>${e(about.how)}</p></div></div></div></section>`;
-  return pageShell({title:content.meta.title,description:content.meta.description,current:'home',body,bodyClass:'landing--s11'});
+  return pageShell({title:content.meta.title,description:content.meta.description,current:'home',body,bodyClass:'landing--s11 landing--imt'});
 }
 
 function landingPage() {
@@ -237,7 +237,7 @@ function fullTextPage() {
   if (headings.filter(h => /^m\d+$/.test(h.id)).length !== 12) throw new Error('В полном тексте нужны 12 основных разделов');
   const toc = `<aside class="document-toc" aria-label="Оглавление"><h2>Содержание</h2><ol>${headings.filter(h => /^m\d+$/.test(h.id)).map(h => `<li><a href="#${e(h.id)}">${e(h.title.replace(/^\d+\.\s*/, ''))}</a></li>`).join('')}</ol><p><a href="#a">Приложение А</a> · <a href="#b">Приложение Б</a></p></aside>`;
   const body = `<header class="document-hero"><div class="container"><span class="eyebrow">${e(content.meta.conceptStatus)}</span><h1>${e(content.meta.title)}</h1><p>${e(content.meta.edition)}. Полный текст Концепции; правовая детализация, программа внедрения и проверка эффектов требуют дальнейшей работы.</p><a class="document-back" href="./index.html">← Вернуться к краткому изложению</a></div></header><div class="container document-layout">${toc}<article class="document-body">${parseMarkdown(mainMd)}</article></div>`;
-  return pageShell({ title: `Полный текст — ${content.meta.title}`, description: content.meta.description, current: 'concept', body });
+  return pageShell({ title: `Полный текст — ${content.meta.title}`, description: content.meta.description, current: 'concept', body, bodyClass: 'document--imt' });
 }
 
 function px(n) { return `${n}px`; }

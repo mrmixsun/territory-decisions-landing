@@ -367,6 +367,8 @@ a:hover { color: var(--color-accent); }
   .landing--imt .menu-toggle { border-color: #3A4758; background: #111E2C; color: #fff; }
   .landing--imt .mobile-nav { border-color: #29384A; background: var(--imt-night); }
   .landing--imt .mobile-nav a { border-color: #29384A; color: #fff; }
+  .landing--imt .mobile-nav a.is-active,
+  .landing--imt .mobile-nav a[aria-current='location'] { padding-left: 12px; border-left: 3px solid var(--imt-blue); background: rgba(59,130,246,.1); color: #fff; }
   .landing--imt .s11-hero { padding: 14px 0; background: var(--imt-canvas); }
   .landing--imt .s11-hero__grid { width: calc(100% - 28px); min-height: 0; padding: 38px 24px 24px; border: 1px solid var(--imt-line); border-radius: 12px; background: #fff; }
   .landing--imt .s11-hero__copy { padding: 0; }
@@ -630,10 +632,12 @@ a:hover { color: var(--color-accent); }
   .landing--s11.landing--imt .site-mark { gap: 16px; color: #fff; font-size: 11px; line-height: 1.1; }
   .landing--s11.landing--imt .desktop-nav { gap: clamp(15px,1.45vw,25px); }
   .landing--s11.landing--imt .desktop-nav { align-items: stretch; gap: 0; }
-  .landing--s11.landing--imt .desktop-nav a { display: flex; align-items: center; width: 128px; min-height: 32px; padding: 0 13px; color: #AEB8C4; font-size: 13px; font-weight: 500; line-height: 1.15; white-space: normal; }
+  .landing--s11.landing--imt .desktop-nav a { display: flex; align-items: center; width: 128px; min-height: 32px; padding: 0 13px; color: #AEB8C4; font-size: 13px; font-weight: 500; line-height: 1.15; white-space: normal; transition: color .18s ease, background-color .18s ease, box-shadow .18s ease; }
   .landing--s11.landing--imt .desktop-nav a + a { border-left: 1px solid #2B394A; }
   .landing--s11.landing--imt .desktop-nav a[href="#transition"] { width: 110px; }
   .landing--s11.landing--imt .desktop-nav a:hover { color: #fff; }
+  .landing--s11.landing--imt .desktop-nav a.is-active,
+  .landing--s11.landing--imt .desktop-nav a[aria-current='location'] { color: #fff; background: rgba(59,130,246,.1); box-shadow: inset 0 -2px var(--imt-blue); }
   .landing--s11.landing--imt .header-full { color: #fff; font-size: 12px; border: 1px solid #324154; }
   .landing--s11.landing--imt .site-footer { background: #07111C; border: 0; }
   .landing--s11.landing--imt .site-footer .footer-inner { color: #94A0AF; font-size: 12px; }

@@ -647,6 +647,8 @@ a:hover { color: var(--color-accent); }
   .landing--s11.landing--imt .site-footer .footer-inner { color: #94A0AF; font-size: 12px; }
 }
 
+.landing--imt .s11-about { display: none; }
+
 .document--imt {
   --color-accent: #3B82F6;
   --color-accentHover: #2563EB;

@@ -141,10 +141,11 @@ function landingPageS11() {
   const byId = id => sections.find(section => section.id === id);
   const card = (frame, type) => `<article class="s11-card s11-card--${type}" id="${e(frame.id)}"><div class="s11-card__top"><span class="s11-num">${e(frame.number)}</span><span class="s11-kicker">${e(frame.eyebrow)}</span></div><h3>${e(frame.title)}</h3><p>${e(frame.paragraphs[0])}</p><a href="${e(safeHref(frame.more?.href))}">Подробнее <span aria-hidden="true">↗</span></a></article>`;
   const sectionTitle = (label, title, intro = '') => {
+    const cleanLabel = String(label).replace(/\s*\/\s*\d+\s*$/, '');
     const introMarkup = Array.isArray(intro)
       ? intro.map(paragraph => `<p>${e(paragraph)}</p>`).join('')
       : intro ? `<p>${e(intro)}</p>` : '';
-    return `<div class="s11-heading"><span class="s11-kicker">${e(label)}</span><h2>${e(title)}</h2>${introMarkup}</div>`;
+    return `<div class="s11-heading"><span class="s11-kicker">${e(cleanLabel)}</span><h2>${e(title)}</h2>${introMarkup}</div>`;
   };
   const slides = story.slides.map((slide, i) => `<article class="s11-story-slide${i === 0 ? ' is-active' : ''}" id="story-slide-${i + 1}" role="tabpanel" aria-labelledby="story-tab-${i + 1}" data-slide="${i}" ${i ? 'hidden' : ''}><div class="s11-story-copy"><span class="s11-step">${e(slide.number)} / 04 · ${e(slide.label)}</span><h3>${e(slide.title)}</h3><p>${e(slide.body)}</p></div><figure class="s11-story-art s11-story-art--${i + 1}"><picture><source media="(max-width: 760px)" srcset="${asset(slide.mobileAsset)}"><img src="${asset(slide.asset)}" alt="${e(slide.alt)}" loading="lazy" decoding="async"></picture></figure></article>`).join('');
   const tabs = story.slides.map((slide, i) => `<button type="button" class="s11-story-tab${i === 0 ? ' is-active' : ''}" id="story-tab-${i + 1}" data-story-tab="${i}" role="tab" aria-controls="story-slide-${i + 1}" aria-selected="${i === 0}" tabindex="${i === 0 ? '0' : '-1'}"><span>${e(slide.number)}</span>${e(slide.tabTitle || slide.title)}</button>`).join('');

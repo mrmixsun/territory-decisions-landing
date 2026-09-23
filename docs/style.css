@@ -627,7 +627,7 @@ a:hover { color: var(--color-accent); }
   .landing--s11.landing--imt .site-mark { gap: 16px; color: #fff; font-size: 11px; line-height: 1.1; }
   .landing--s11.landing--imt .desktop-nav { gap: clamp(15px,1.45vw,25px); }
   .landing--s11.landing--imt .desktop-nav { align-items: stretch; gap: 0; }
-  .landing--s11.landing--imt .desktop-nav a { display: flex; align-items: center; width: 108px; min-height: 30px; padding: 0 13px; color: #AEB8C4; font-size: 10px; font-weight: 500; line-height: 1.15; white-space: normal; }
+  .landing--s11.landing--imt .desktop-nav a { display: flex; align-items: center; width: 128px; min-height: 32px; padding: 0 13px; color: #AEB8C4; font-size: 12px; font-weight: 500; line-height: 1.15; white-space: normal; }
   .landing--s11.landing--imt .desktop-nav a + a { border-left: 1px solid #2B394A; }
   .landing--s11.landing--imt .desktop-nav a:hover { color: #fff; }
   .landing--s11.landing--imt .header-full { color: #fff; font-size: 12px; border: 1px solid #324154; }
@@ -659,7 +659,7 @@ a:hover { color: var(--color-accent); }
 .document--imt .site-mark__monogram span { color: #3B82F6; }
 .document--imt .site-mark__wordmark { max-width: 190px; color: #D8DEE6; font-size: 10px; font-weight: 500; line-height: 1.15; letter-spacing: .055em; text-transform: uppercase; }
 .document--imt .desktop-nav { align-items: stretch; gap: 0; }
-.document--imt .desktop-nav a { display: flex; align-items: center; width: 108px; min-height: 30px; padding: 0 13px; color: #AEB8C4; font-size: 10px; font-weight: 500; line-height: 1.15; white-space: normal; }
+.document--imt .desktop-nav a { display: flex; align-items: center; width: 128px; min-height: 32px; padding: 0 13px; color: #AEB8C4; font-size: 12px; font-weight: 500; line-height: 1.15; white-space: normal; }
 .document--imt .desktop-nav a + a { border-left: 1px solid #2B394A; }
 .document--imt .desktop-nav a:hover { color: #fff; }
 .document--imt .header-full { color: #fff; border-color: #324154; }
@@ -694,8 +694,8 @@ a:hover { color: var(--color-accent); }
   .document--imt .site-mark__wordmark { display: none; }
   .landing--s11.landing--imt .desktop-nav { gap: 0; }
   .document--imt .desktop-nav { gap: 0; }
-  .landing--s11.landing--imt .desktop-nav a { font-size: 10px; }
-  .document--imt .desktop-nav a { font-size: 10px; }
+  .landing--s11.landing--imt .desktop-nav a { font-size: 12px; }
+  .document--imt .desktop-nav a { font-size: 12px; }
   .landing--s11.landing--imt .header-full,
   .document--imt .header-full { padding: 9px 12px; font-size: 11px; }
 }

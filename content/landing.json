@@ -8,12 +8,12 @@
     "footerNote": "Это предложение для обсуждения, а не действующая государственная услуга или утверждённый стандарт."
   },
   "nav": [
-    { "id": "why", "label": "Задача" },
-    { "id": "how", "label": "Принципы" },
-    { "id": "practice", "label": "В работе" },
-    { "id": "transition", "label": "Этапы" },
-    { "id": "development", "label": "Совместимость" },
-    { "id": "materials", "label": "Материалы" }
+    { "id": "why", "label": "Зачем менять подход" },
+    { "id": "how", "label": "Что предлагает концепция" },
+    { "id": "practice", "label": "Что изменится в работе" },
+    { "id": "transition", "label": "Этапы перехода" },
+    { "id": "development", "label": "Развитие концепции" },
+    { "id": "materials", "label": "Полные материалы" }
   ],
   "hero": {
     "id": "hero",

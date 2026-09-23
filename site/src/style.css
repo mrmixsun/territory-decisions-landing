@@ -684,3 +684,14 @@ a:hover { color: var(--color-accent); }
   .document--imt .mobile-nav a { color: #fff; border-color: #29384A; }
   .document--imt .document-layout { width: calc(100% - 28px); margin-top: 14px; padding: 36px 22px 70px; border-radius: 12px; background: #fff; }
 }
+
+@media (min-width: 761px) and (max-width: 1400px) {
+  .landing--s11.landing--imt .site-mark__wordmark,
+  .document--imt .site-mark__wordmark { display: none; }
+  .landing--s11.landing--imt .desktop-nav,
+  .document--imt .desktop-nav { gap: 14px; }
+  .landing--s11.landing--imt .desktop-nav a,
+  .document--imt .desktop-nav a { font-size: 11px; }
+  .landing--s11.landing--imt .header-full,
+  .document--imt .header-full { padding: 9px 12px; font-size: 11px; }
+}
